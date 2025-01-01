@@ -53,14 +53,19 @@ class List extends Component {
     axios.get(url)
     .then(
       (response) => { 
-        this.setState({ 
-          activitiesList: response.data,
-          isLoading: false // données chargées
-        }, () => {
-          this.calculateStats(response.data);
-        }) 
-      },
-      (error) => { 
+        console.log('API response:', response.data); // Pour déboguer
+        if (Array.isArray(response.data)) {    
+          this.setState({ 
+            activitiesList: response.data,
+            isLoading: false // données chargées
+          }, () => {
+            this.calculateStats(response.data);
+          });
+        } else {
+          console.error('API response is not an array:', response.data);
+        }
+      })
+    .catch(error => { 
         console.log("ERREUR de l'API  : " + error);
         this.setState({ isLoading: false });
       }
