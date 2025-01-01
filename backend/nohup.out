@@ -1,0 +1,471 @@
+App listening at http://localhost:3127
+2024-12-29T07:55:17.656Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T07:55:17.670Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T07:56:15.870Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T07:56:16.025Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T07:56:18.008Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T07:56:18.029Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T07:56:18.100Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T07:56:18.137Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T07:56:27.841Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T07:56:28.022Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T07:57:31.360Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T07:58:14.423Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T07:58:16.590Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:08:51.130Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:10:37.004Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:10:37.093Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:12:54.290Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T08:12:54.299Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T08:12:54.371Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T08:12:54.403Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T08:12:56.379Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:12:56.533Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:12:57.555Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:12:57.610Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:24:02.284Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:24:02.312Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:24:02.367Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:24:02.404Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:24:33.049Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T08:24:33.085Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T08:24:33.142Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T08:24:33.182Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T08:26:10.618Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:26:10.759Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:26:18.708Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T08:26:18.722Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T08:26:18.821Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T08:26:18.847Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T08:26:24.190Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:26:24.349Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:27:01.053Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:27:01.122Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:32:52.338Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:32:52.394Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:32:56.786Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:32:56.917Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:32:58.075Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:32:58.133Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:34:14.252Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:34:14.306Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:34:14.362Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:34:14.417Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:35:16.141Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:35:16.192Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:35:47.203Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:35:47.344Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:35:48.143Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T08:35:48.163Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T08:35:48.217Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T08:35:48.245Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T08:35:51.322Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:35:51.452Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:35:52.182Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:35:52.252Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:36:39.055Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:36:39.131Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:36:39.315Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:36:39.395Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:36:58.374Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:36:58.509Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:36:59.381Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T08:36:59.410Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T08:36:59.446Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T08:36:59.486Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T08:37:02.012Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:37:02.146Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T08:37:03.860Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:37:03.946Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:37:47.154Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:37:47.170Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:37:47.234Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:37:47.246Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:38:58.355Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:38:58.408Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:42:39.903Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:42:39.975Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:42:40.301Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:42:40.370Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:47:14.795Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:47:14.860Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:47:15.310Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:47:15.373Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:49:47.065Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:49:47.120Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:49:47.296Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:49:47.352Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:53:02.089Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:53:02.144Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:53:02.285Z - activity.js - activité bien renvoyée - OK
+2024-12-29T08:53:02.350Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:06:47.281Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:06:47.309Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:06:47.367Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:06:47.404Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:06:47.463Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:06:47.533Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:07:10.326Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T09:07:10.480Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T09:07:11.824Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:07:11.892Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:07:26.298Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T09:07:26.441Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T09:07:30.476Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:07:30.561Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:07:52.566Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T09:07:52.705Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T09:10:35.004Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T09:10:35.028Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T09:10:35.136Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T09:10:35.154Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T09:11:12.389Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T09:11:12.416Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T09:11:12.465Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T09:11:12.511Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T09:11:13.939Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T09:11:13.968Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T09:11:13.997Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T09:11:14.011Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T09:11:15.738Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T09:11:15.903Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T09:11:17.082Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:11:17.147Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:11:30.031Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T09:11:30.178Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T09:11:35.899Z - activity.js - activité bien renvoyée - OK
+2024-12-29T09:11:35.983Z - activity.js - activité bien renvoyée - OK
+2024-12-29T11:20:25.695Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T11:20:27.781Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T11:20:36.681Z - last_activity_date.js - Date dernière activité bien renvoyée (=26/12/2024 at 10:24) - OK
+2024-12-29T11:20:36.689Z - month_distance.js - Distances par année bien renvoyée - OK
+Renouvellement des tokens...
+... OK, tokens renouvellés !
+Sauvegarde des nouveaux tokens...
+Récupération des activités Strava, pour la page 1 sur 1...
+... OK, tokens sauvegardés !
+   ... mise à jour de la DB avec la page 1...
+   ... mise à jour de la DB avec 100 éléments...
+   ... OK, DB mise à jour avec 1 élements (sur les 100 initiaux)
+2024-12-29T11:20:47.002Z - update.js - 1 dernière(s) activité(s) bien récupérée(s) - OK
+2024-12-29T11:20:47.060Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-29T11:21:02.467Z - month_distance.js - Distance du mois bien renvoyée (=[object Object]) - OK
+2024-12-29T11:21:29.314Z - activities_list.js - liste bien renvoyée - OK
+2024-12-29T11:21:30.761Z - activity.js - activité bien renvoyée - OK
+App listening at http://localhost:3127
+2024-12-29T12:54:25.814Z - activity.js - activité bien renvoyée - OK
+2024-12-29T12:54:25.893Z - activity.js - activité bien renvoyée - OK
+2024-12-29T12:54:29.779Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-29T12:54:30.822Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+App listening at http://localhost:3127
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2022', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2021', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2020', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2019', target: '1200' }
+2024-12-30T00:58:53.722Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T00:58:53.730Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T01:00:19.599Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T01:00:32.533Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:00:32.554Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T01:02:06.493Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:03:02.695Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:03:02.708Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T01:03:07.488Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T01:03:09.760Z - activities_list.js - liste bien renvoyée - OK pour l'année 2024
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1000' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T01:04:29.202Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:04:29.210Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T01:06:04.328Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:06:04.334Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T01:06:41.676Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:06:41.683Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T01:07:05.288Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:07:05.296Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T01:07:14.002Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:07:14.009Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T01:07:15.735Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T01:07:22.999Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:07:23.006Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T01:07:45.464Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T01:07:46.111Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:07:46.119Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T01:07:49.529Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T01:07:49.534Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:09:39.335Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:09:39.342Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:11:28.401Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:11:28.417Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:11:29.553Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:11:29.560Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:15:33.962Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:15:33.966Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:15:34.026Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:15:34.045Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:20:53.069Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:20:53.081Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:20:53.089Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:20:53.097Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:20:53.813Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:20:53.838Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:20:53.875Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:20:53.919Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:22:33.299Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:22:33.327Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:22:33.334Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:22:33.355Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:22:33.801Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:22:33.818Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:22:33.888Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:22:34.898Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:40:20.096Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:40:20.102Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:40:20.122Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:40:20.135Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:40:20.822Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:40:20.847Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:40:20.906Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:40:20.931Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:43:10.693Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:43:10.704Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:43:10.762Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:43:10.782Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:45:36.026Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T08:45:36.157Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T08:46:40.848Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:46:40.871Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:46:40.881Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T08:46:40.885Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:47:36.361Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T08:47:36.486Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T08:47:41.728Z - activities_list.js - liste bien renvoyée - OK pour l'année 2024
+2024-12-30T08:47:46.383Z - activities_list.js - liste bien renvoyée - OK pour l'année 2015
+2024-12-30T08:50:29.130Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T08:50:30.053Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T08:53:01.505Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T08:53:01.510Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T08:53:44.146Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:06:11.907Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:06:11.913Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T09:06:16.366Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T09:06:20.757Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:15:33.737Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:15:33.863Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:18:40.945Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:18:41.099Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:18:41.775Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:18:42.372Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:26:08.609Z - activity.js - activité bien renvoyée - OK
+2024-12-30T09:26:08.615Z - activity.js - activité bien renvoyée - OK
+2024-12-30T09:26:14.929Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:26:15.051Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:26:24.737Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:26:25.406Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T09:42:27.359Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:42:27.971Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:42:37.343Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:42:37.367Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T09:42:37.435Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:42:37.460Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T09:42:40.902Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:42:40.919Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T09:42:40.973Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:42:41.001Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T09:57:42.867Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:57:42.871Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T09:57:42.927Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:57:42.945Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T09:57:49.406Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T09:57:50.044Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1300' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1400' }
+2024-12-30T09:57:59.667Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:57:59.684Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T09:57:59.757Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:57:59.794Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1400' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1400' }
+2024-12-30T09:58:12.326Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:58:12.350Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T09:58:12.402Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T09:58:12.434Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T10:34:55.442Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T10:34:55.447Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T10:38:20.821Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T10:38:20.827Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T10:38:20.898Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T10:38:20.909Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T10:38:29.727Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T10:38:29.760Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T10:38:29.768Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T10:38:29.793Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '760' }
+Route /api/strava/report appelée avec: { year: '2024', target: '760' }
+2024-12-30T10:39:31.575Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T10:39:31.588Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T10:39:31.612Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T10:39:31.624Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1150' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1150' }
+2024-12-30T10:46:28.135Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T10:46:28.146Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1580' }
+2024-12-30T10:46:39.052Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T10:46:39.061Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1580' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1570' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1500' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1460' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1400' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1330' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1290' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1170' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1130' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1070' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1020' }
+Route /api/strava/report appelée avec: { year: '2024', target: '980' }
+Route /api/strava/report appelée avec: { year: '2024', target: '960' }
+Route /api/strava/report appelée avec: { year: '2024', target: '930' }
+Route /api/strava/report appelée avec: { year: '2024', target: '920' }
+Route /api/strava/report appelée avec: { year: '2024', target: '900' }
+Route /api/strava/report appelée avec: { year: '2024', target: '890' }
+Route /api/strava/report appelée avec: { year: '2024', target: '880' }
+Route /api/strava/report appelée avec: { year: '2024', target: '870' }
+Route /api/strava/report appelée avec: { year: '2024', target: '860' }
+Route /api/strava/report appelée avec: { year: '2024', target: '850' }
+Route /api/strava/report appelée avec: { year: '2024', target: '940' }
+Route /api/strava/report appelée avec: { year: '2024', target: '950' }
+Route /api/strava/report appelée avec: { year: '2024', target: '970' }
+Route /api/strava/report appelée avec: { year: '2024', target: '990' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1000' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1010' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1020' }
+Route /api/strava/report appelée avec: { year: '2024', target: '920' }
+Route /api/strava/report appelée avec: { year: '2024', target: '900' }
+Route /api/strava/report appelée avec: { year: '2024', target: '960' }
+Route /api/strava/report appelée avec: { year: '2024', target: '880' }
+Route /api/strava/report appelée avec: { year: '2024', target: '860' }
+Route /api/strava/report appelée avec: { year: '2024', target: '890' }
+Route /api/strava/report appelée avec: { year: '2024', target: '980' }
+Route /api/strava/report appelée avec: { year: '2024', target: '930' }
+Route /api/strava/report appelée avec: { year: '2024', target: '870' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1170' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1000' }
+Route /api/strava/report appelée avec: { year: '2021', target: '1000' }
+2024-12-30T10:47:19.147Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T10:47:19.154Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T13:38:21.781Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T13:38:21.792Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T13:38:27.075Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T13:38:38.629Z - activity.js - activité bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T13:38:50.913Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T13:38:52.396Z - activity.js - activité bien renvoyée - OK
+2024-12-30T13:46:50.303Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T13:46:50.308Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1120' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1120' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1120' }
+2024-12-30T13:48:28.368Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T13:48:28.389Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T13:48:30.563Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+Route /api/strava/report appelée avec: { year: '2024', target: '1120' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1120' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1120' }
+2024-12-30T13:52:36.079Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T13:52:36.127Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T13:54:51.859Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T13:54:51.870Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1120' }
+2024-12-30T13:55:14.956Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T13:55:14.975Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1120' }
+2024-12-30T13:55:23.079Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T13:55:23.105Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+Route /api/strava/report appelée avec: { year: '2024', target: '920' }
+2024-12-30T13:57:38.642Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T13:57:38.671Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T13:57:47.880Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T13:57:51.468Z - activity.js - activité bien renvoyée - OK
+2024-12-30T13:59:52.804Z - activity.js - activité bien renvoyée - OK
+2024-12-30T14:04:11.768Z - activity.js - activité bien renvoyée - OK
+2024-12-30T14:04:19.229Z - activity.js - activité bien renvoyée - OK
+2024-12-30T14:04:24.612Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T14:04:28.476Z - activity.js - activité bien renvoyée - OK
+2024-12-30T14:06:58.978Z - activity.js - activité bien renvoyée - OK
+2024-12-30T14:09:44.282Z - activity.js - activité bien renvoyée - OK
+2024-12-30T14:13:12.949Z - activity.js - activité bien renvoyée - OK
+2024-12-30T14:14:09.398Z - activity.js - activité bien renvoyée - OK
+2024-12-30T14:14:57.478Z - activity.js - activité bien renvoyée - OK
+2024-12-30T14:15:45.180Z - activity.js - activité bien renvoyée - OK
+2024-12-30T14:17:44.570Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T14:17:44.583Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1170' }
+2024-12-30T14:18:46.961Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T14:18:46.968Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T20:22:36.706Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T20:22:36.712Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T20:23:20.811Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T20:23:36.094Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T20:23:36.096Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1440' }
+2024-12-30T20:23:44.179Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-30T20:23:44.585Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T20:23:44.590Z - month_distance.js - Distances par année bien renvoyée - OK
+2024-12-30T20:23:48.847Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-30T20:23:48.860Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1330' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1080' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1380' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1110' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1420' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1180' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1460' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1250' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1490' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1280' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1550' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1350' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1390' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1130' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1430' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+2024-12-30T20:25:46.522Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1470' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1300' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1510' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1320' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1570' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1360' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1410' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1160' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1440' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1220' }
+2024-12-30T20:25:46.700Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1480' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1260' }
+Route /api/strava/report appelée avec: { year: '2024', target: '1530' }
+2024-12-30T20:25:58.378Z - activities_list.js - liste bien renvoyée - OK pour toutes les années
+2024-12-31T08:28:32.965Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
+2024-12-31T08:28:32.975Z - month_distance.js - Distances par année bien renvoyée - OK
+Route /api/strava/report appelée avec: { year: '2024', target: '1200' }
+Appel backend : Tue Dec 31 2024 13:24:03 GMT+0100 (Central European Standard Time)
+2024-12-31T12:24:08.546Z - last_activity_date.js - Date dernière activité bien renvoyée (=29/12/2024 at 10:28) - OK
