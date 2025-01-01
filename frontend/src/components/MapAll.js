@@ -9,9 +9,10 @@ const polyUtil = require('../utils/polylineFunctions.js');
 
 const MapAll = () => {
   const [traces, setTraces] = useState([]);
-  const [year, setYear] = useState("all");
+  const [currentYear, setCurrentYear] = useState("*** All ***");
 
   useEffect(() => {
+    const year = currentYear === "*** All ***" ? "all" : currentYear;
     const url = year === "all" 
       ? '/api/strava/activities_list' 
       : `/api/strava/activities_list?year=${year}`;
@@ -26,14 +27,18 @@ const MapAll = () => {
           }));
         setTraces(activitiesWithTraces);
       });
-  }, [year]);
+  }, [currentYear]);
+
+  const handleYearChange = (evt) => {
+    setCurrentYear(evt.target.value);
+  };
 
   return (
     <Container fluid className='bg-grey text-black text-center'>
         <Row className="py-2">
           <SelectYear 
-            currentYear={year} 
-            updateHandler={setYear} />
+            currentYear={currentYear} 
+            updateHandler={handleYearChange} />
         </Row>
 
         <MapContainer 
@@ -49,7 +54,7 @@ const MapAll = () => {
               <Polyline 
                 key={trace.id}
                 positions={trace.trace}
-                color="red"
+                color="pink"
                 weight={3}
                 opacity={0.5}
               />
