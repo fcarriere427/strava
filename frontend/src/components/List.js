@@ -44,9 +44,6 @@ class List extends Component {
   }
 
   // Récupération des activités pour l'année donnée
-  D'après l'erreur, `response.data` n'est pas un tableau. Imprimons le contenu pour voir sa structure :
-
-
   getActivities(year) {
     let url = year === "all" 
       ? '/api/strava/activities_list' 
