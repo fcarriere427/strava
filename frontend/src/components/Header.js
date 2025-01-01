@@ -43,7 +43,7 @@ class Header extends Component {
               </NavLink>
             </NavItem>
             <NavItem style={{ display: 'flex', alignItems: 'center' }}>
-              <NavLink  // className="active" // ça fonctionne :-) :-) :-)
+              <NavLink
                 to ="/list"
                 tag={RRNavLink} activeclassname="active"
                 >
@@ -51,11 +51,19 @@ class Header extends Component {
               </NavLink>
             </NavItem>
             <NavItem style={{ display: 'flex', alignItems: 'center' }}>
-              <NavLink  // className="active" // ça fonctionne :-) :-) :-)
+              <NavLink  
                 to ="/report"
                 tag={RRNavLink} activeclassname="active"
                 >
                 Report
+              </NavLink>
+            </NavItem>
+            <NavItem style={{ display: 'flex', alignItems: 'center' }}>
+              <NavLink
+                to ="/map"
+                tag={RRNavLink} activeclassname="active"
+                >
+                Map
               </NavLink>
             </NavItem>
 

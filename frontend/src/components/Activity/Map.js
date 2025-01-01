@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Polyline, useMap } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 
 const Leaflet = window.L;
-const polyUtil = require('./polylineFunctions.js');
+const polyUtil = require('../../utils/polylineFunctions.js');
 
 function Map({ activity }) {
   return (
