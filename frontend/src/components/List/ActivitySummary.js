@@ -23,7 +23,7 @@ class ActivitySummary extends Component {
     return(
       <Container className="bg-light text-black border">
         <Row className="align-items-center">
-          <Col className="fw-bold" xs="3">
+          <Col className="fw-bold" md="2" xs="4">
             <p> 
               <button
                 className="btn btn-link border-0 shadow-none" 
@@ -33,19 +33,19 @@ class ActivitySummary extends Component {
               <span className="fw-light"><br/>{time_str}</span>
             </p>
           </Col>
-          <Col  className="fw-bold text-end" xs="1">
+          <Col  className="fw-bold text-end" md="2" xs="4">
             <p>{(Math.round(this.props.data.doc.distance / 1000 * 100) / 100).toLocaleString('fr-FR')} km</p>
           </Col>
-          <Col className="text-end" xs="1">
+          <Col className="text-end" md="2" xs="4">
             <p>{strTime(this.props.data.doc.moving_time)}</p>
           </Col>
-          <Col className="text-end" xs="1">
+          <Col className="text-end" md="2" xs="4">
             <p>{strSpeed(this.props.data.doc.average_speed)}</p>
           </Col>
-          <Col className="text-end" xs="1">
+          <Col className="text-end" md="2" xs="4">
             <p>{this.props.data.doc.weighted_average_watts} W</p>
           </Col>
-          <Col className="fw-light text-start" xs="3">
+          <Col className="fw-light text-start" md="2" xs="4">
             <p>{this.props.data.doc.name}</p>
           </Col>
         </Row>  
