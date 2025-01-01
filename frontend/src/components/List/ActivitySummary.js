@@ -43,7 +43,7 @@ class ActivitySummary extends Component {
             <p>{strSpeed(this.props.data.doc.average_speed)}</p>
           </Col>
           <Col className="text-end" xs="2">
-            <p>{this.state.activity.weighted_average_watts} W</p>
+            <p>{this.props.data.doc.weighted_average_watts} W</p>
           </Col>
           <Col className="fw-light text-start" xs="3">
             <p>{this.props.data.doc.name}</p>
