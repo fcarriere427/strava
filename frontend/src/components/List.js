@@ -98,7 +98,7 @@ class List extends Component {
             <strong>{strSpeed(stats.totalDistance / stats.totalDuration)}</strong>
           </Col>
           <Col>
-            <strong>{stats.averagePower)}</strong> W
+            <strong>{stats.averagePower}</strong> W
           </Col>
         </Row>
 
