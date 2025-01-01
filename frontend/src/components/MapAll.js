@@ -12,7 +12,7 @@ const MapAll = ({year}) => {
   const [currentYear, setCurrentYear] = useState("all");
 
   useEffect(() => {
-    const url = year === "all" 
+    const url = currentYear === "all" 
       ? '/api/strava/activities_list' 
       : `/api/strava/activities_list?year=${currentYear}`;
       
