@@ -11,7 +11,7 @@ class List extends Component {
     super(props);
     this.state = {
       activitiesList: [],
-      currentYear:"*** All ***",
+      currentYear:new Date().getFullYear().toString(), //"*** All ***" si on veut afficher toutes les années par défaut
       stats: {
         count:0,
         totalDistance:0,
@@ -27,9 +27,10 @@ class List extends Component {
 
   // Actions quand on modifie la cible
   updateYear(evt) {
+    const year = evt.target.value === "*** All ***" ? "all" : evt.target.value;
     // bien penser à l'asynchrone...
     this.setState({ currentYear: evt.target.value }, () => {
-      this.getActivities(this.state.currentYear)
+      this.getActivities(year)
     })
   }
 
