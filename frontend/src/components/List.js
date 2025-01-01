@@ -47,23 +47,20 @@ class List extends Component {
   getActivities(year) {
     // Adapter l'URL en fonction de la sélection
     let url = year === "all" 
-    ? '/api/strava/activities_list' // Sans paramètre year pour tout récupérer
-    : '/api/strava/activities_list?year=' + year;
-    // Appel de l'API
+      ? '/api/strava/activities_list' // Sans paramètre year pour tout récupérer
+      : '/api/strava/activities_list?year=' + year;
+      // Appel de l'API
     axios.get(url)
     .then(
       (response) => { 
-        console.log('API response:', response.data); // Pour déboguer
-        if (Array.isArray(response.data)) {    
-          this.setState({ 
-            activitiesList: response.data,
-            isLoading: false // données chargées
-          }, () => {
-            this.calculateStats(response.data);
-          });
-        } else {
-          console.error('API response is not an array:', response.data);
-        }
+        // Les activités sont dans le champ doc de chaque objet
+        const activities = response.data.map(item => item.doc);
+        this.setState({ 
+          activitiesList: activities,
+          isLoading: false // données chargées
+        }, () => {
+          this.calculateStats(activities);
+        });
       })
     .catch(error => { 
         console.log("ERREUR de l'API  : " + error);
