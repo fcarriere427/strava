@@ -33,7 +33,7 @@ const MapAll = ({year}) => {
         <Row className="py-2">
           <SelectYear 
             currentYear={currentYear} 
-            updateHandler={(year) => setCurrentYear} />
+            updateHandler={(currentYear) => setCurrentYear} />
         </Row>
 
         <MapContainer 
