@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'reactstrap'
 import { ActivitySummaryWithNavigate } from './List/ActivitySummary'
 import { SelectYear } from './List/SelectYear'
 import { strSpeed } from '../utils/functions'
-
 import axios from 'axios';
 
 const List = () => {
@@ -17,36 +16,42 @@ const List = () => {
   });
   const [isLoading, setIsLoading] = useState(true);
 
-  const getActivities = useCallback((year) => {
-    const url = year === "all" 
-      ? '/api/strava/activities_list' 
-      : `/api/strava/activities_list?year=${year}`;
-      
-    axios.get(url)
-      .then(response => {
-        const activities = response.data;
-        setActivitiesList(activities);
-        setIsLoading(false);
-        calculateStats(activities);
-      })
-      .catch(error => {
-        console.error("API error:", error);
-        setIsLoading(false);
+  const calculateStats = useCallback((activities) => {
+    if (activities.length === 0) {
+      setStats({
+        count: 0,
+        totalDistance: 0,
+        totalDuration: 0,
+        averagePower: 0
       });
-  }, []);
-
-  const calculateStats = (activities) => {
+      return;
+    }
     setStats({
       count: activities.length,
       totalDistance: activities.reduce((sum, activity) => sum + activity.doc.distance, 0),
       totalDuration: activities.reduce((sum, activity) => sum + activity.doc.moving_time, 0),
       averagePower: Math.round(activities.reduce((sum, activity) => sum + activity.doc.weighted_average_watts, 0) / activities.length)
     });
-  };
+  }, []);
 
+  const getActivities = useCallback(async (year) => {
+    try{
+      const url = year === "all" 
+        ? '/api/strava/activities_list' 
+        : `/api/strava/activities_list?year=${year}`;
+      const response = await axios.get(url);
+      setActivitiesList(response.data);
+      calculateStats(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("API error:", error);
+      setIsLoading(false);
+    }
+  }, [calculateStats]);
+      
   useEffect(() => {
     getActivities(currentYear);
-  }, [currentYear, getActivities]);
+  }, [getActivities, currentYear]);
 
   const updateYear = (evt) => {
     const year = evt.target.value === "*** All ***" ? "all" : evt.target.value;
@@ -61,33 +66,29 @@ const List = () => {
   return (
     <Container fluid className='bg-grey text-black text-center'>
       <Row className="py-2">
-        <SelectYear currentYear={currentYear} updateHandler={updateYear} />
+        <SelectYear 
+          currentYear={currentYear} 
+          updateHandler={(evt) => {
+            const year = evt.target.value === "*** All ***" ? "all" : evt.target.value;
+            setCurrentYear(evt.target.value);
+            getActivities(year);
+          }}
+        />
       </Row>
 
       <Row className="py-3 bg-info">
-           <Col>
-             <strong>{stats.count}</strong> activités
-           </Col>
-           <Col>
-             <strong>{(Math.round(stats.totalDistance / 1000 * 10) / 10).toLocaleString('fr-FR')}</strong> km
-           </Col>
-           <Col>
-             <strong>{Math.floor(stats.totalDuration / 3600)}</strong>h <strong>{Math.floor((stats.totalDuration % 3600) / 60)}</strong>m
-           </Col>
-           <Col>
-             <strong>{strSpeed(stats.totalDistance / stats.totalDuration)}</strong>
-           </Col>
-           <Col>
-             <strong>{stats.averagePower}</strong> W
-           </Col>
-         </Row>
+        <Col><strong>{stats.count}</strong> activités</Col>
+        <Col><strong>{(Math.round(stats.totalDistance / 1000 * 10) / 10).toLocaleString('fr-FR')}</strong> km</Col>
+        <Col><strong>{Math.floor(stats.totalDuration / 3600)}</strong>h <strong>{Math.floor((stats.totalDuration % 3600) / 60)}</strong>m</Col>
+        <Col><strong>{strSpeed(stats.totalDistance / stats.totalDuration)}</strong></Col>
+        <Col><strong>{stats.averagePower}</strong> W</Col>
+      </Row>
 
-         {/* Activities list */}
-         <Row className="py-3 bg-info">
-           {this.state.activitiesList.map((d, index) =>
-             <ActivitySummaryWithNavigate data={d} key={index} />
-           )}
-         </Row>
+      <Row className="py-3 bg-info">
+        {activitiesList.map((d, index) =>
+          <ActivitySummaryWithNavigate data={d} key={index} />
+        )}
+      </Row>
     </Container>
   );
 };
