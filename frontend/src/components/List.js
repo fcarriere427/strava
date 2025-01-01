@@ -51,7 +51,10 @@ class List extends Component {
       
     axios.get(url)
       .then(response => { 
-        const activities = JSON.parse(response.data); // Parse la réponse JSON
+        console.log('Response:', response);
+        console.log('Response data type:', typeof response.data);
+        console.log('Response data:', response.data);
+        const activities = response.data;
         this.setState({ 
           activitiesList: activities,
           isLoading: false 
