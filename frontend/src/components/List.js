@@ -51,13 +51,14 @@ const List = () => {
       
   useEffect(() => {
     getActivities(currentYear);
-  }, [getActivities, currentYear]);
+  }, [currentYear, getActivities]);
 
-  const updateYear = (evt) => {
-    const year = evt.target.value === "*** All ***" ? "all" : evt.target.value;
-    setCurrentYear(evt.target.value);
+  const handleYearChange = useCallback((evt) => {
+    const value = evt.target.value;
+    const year = value === "*** All ***" ? "all" : value;
+    setCurrentYear(value);
     getActivities(year);
-  };
+  }, [getActivities]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -68,11 +69,7 @@ const List = () => {
       <Row className="py-2">
         <SelectYear 
           currentYear={currentYear} 
-          updateHandler={(evt) => {
-            const year = evt.target.value === "*** All ***" ? "all" : evt.target.value;
-            setCurrentYear(evt.target.value);
-            getActivities(year);
-          }}
+          updateHandler={handleYearChange}
         />
       </Row>
 
