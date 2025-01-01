@@ -14,7 +14,7 @@ const MapAll = () => {
   useEffect(() => {
     const url = year === "all" 
       ? '/api/strava/activities_list' 
-      : `/api/strava/activities_list?year=${currentYear}`;
+      : `/api/strava/activities_list?year=${year}`;
       
     axios.get(url)
       .then(response => {
@@ -26,7 +26,7 @@ const MapAll = () => {
           }));
         setTraces(activitiesWithTraces);
       });
-  }, [currentYear]);
+  }, [year]);
 
   return (
     <Container fluid className='bg-grey text-black text-center'>
