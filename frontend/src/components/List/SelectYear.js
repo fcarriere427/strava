@@ -38,3 +38,5 @@ const SelectYear = ({ currentYear, updateHandler }) => {
     </Form>
   );
 };
+
+export default SelectYear;
