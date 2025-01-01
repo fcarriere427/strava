@@ -37,7 +37,7 @@ class ActivitySummary extends Component {
             <p>{(Math.round(this.props.data.doc.distance / 1000 * 100) / 100).toLocaleString('fr-FR')} km</p>
           </Col>
           <Col className="text-end" xs="2">
-            <p>{strTime(this.props.data.doc.elapsed_time)}</p>
+            <p>{strTime(this.props.data.doc.moving_time)}</p>
           </Col>
           <Col className="text-end" xs="2">
             <p>{strSpeed(this.props.data.doc.average_speed)}</p>
