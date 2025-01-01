@@ -14,9 +14,9 @@ const SelectYear = ({ currentYear, updateHandler }) => {
     setAnnees(years);
   }, []);
 
-  const handleChange = (e) => {
-    updateHandler(e.target.value === '*** All ***' ? 'all' : e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   updateHandler(e.target.value === '*** All ***' ? 'all' : e.target.value);
+  // };
 
   return (
     <Form className="form">
@@ -28,7 +28,7 @@ const SelectYear = ({ currentYear, updateHandler }) => {
             name="select" 
             id="select" 
             value={currentYear === 'all' ? '*** All ***' : currentYear}
-            onChange={handleChange}
+            onChange={updateHandler}
           >
             {annees.map((annee, index) => (
               <option key={index} value={annee}>
