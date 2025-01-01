@@ -19,7 +19,7 @@ function strSpeed(speed) { // speed est en mètres/secondes
   let pace = 1 / speed * 1000; // en secondes par km
   let mn_speed = Math.trunc(pace / 60);
   let sec_speed = Math.round(pace - 60 * mn_speed);
-  let speed_str = mn_speed + 'mn ' + sec_speed + '/km'
+  let speed_str = mn_speed + 'mn' + sec_speed + '/km'
   return speed_str;
 }
 

@@ -61,7 +61,7 @@ class Activity extends Component {
               <Row className="bg-secondary text-white border ps-3">Distance: {Math.round(this.state.activity.distance / 1000 * 100) / 100}km</Row>
               <Row className="bg-secondary text-white border ps-3">Moving time: {strTime(this.state.activity.moving_time)}</Row>
               <Row className="bg-secondary text-white border ps-3">Average speed: {strSpeed(this.state.activity.average_speed)}</Row>
-              <Row className="bg-secondary text-white border ps-3">Weighted average power: {this.state.activity.weighted_average_watts}</Row>
+              <Row className="bg-secondary text-white border ps-3">Weighted average power: {this.state.activity.weighted_average_watts}W</Row>
               <Row className="bg-light border ps-3">Average heartrate: {this.state.activity.average_heartrate ? this.state.activity.average_heartrate : "N/A"}</Row>
               <Row className="bg-light border ps-3">Elevation gain: {this.state.activity.total_elevation_gain}m</Row>
               <Row className="bg-white fw-light border ps-3">Elapsed time: {strTime(this.state.activity.elapsed_time)}</Row>
