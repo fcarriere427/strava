@@ -2,7 +2,7 @@
   "name": "strava_frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://letsq.xyz",
+  "proxy": "https://strava.letsq.xyz",
   "homepage": "https://strava.letsq.xyz/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
