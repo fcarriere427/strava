@@ -39,4 +39,4 @@ const SelectYear = ({ currentYear, updateHandler }) => {
   );
 };
 
-export default SelectYear;
+export { SelectYear };
