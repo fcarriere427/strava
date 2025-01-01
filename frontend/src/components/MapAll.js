@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Polyline } from 'react-leaflet';
 import { Container, Row } from 'reactstrap'
-import { SelectYear } from './List/SelectYear'
+import SelectYear from './List/SelectYear'
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
 
