@@ -15,7 +15,7 @@ ReactDOM.render(
         <Route path="/tracker" element={<Tracker />} />
         <Route path="/list" element={<List />} />
         <Route path="/report" element={<Report />} />
-        <Route path="/map" element={<MapAll year={currentYear} />} />
+        <Route path="/map" element={<MapAll />} />
         <Route path="/activity/:id" element={<Activity />} /> 
       </Routes>
       <Footer />
