@@ -54,7 +54,7 @@ const MapAll = () => {
               <Polyline 
                 key={trace.id}
                 positions={trace.trace}
-                color="pink"
+                color="purple"
                 weight={3}
                 opacity={0.5}
               />

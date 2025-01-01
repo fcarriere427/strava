@@ -74,11 +74,11 @@ const List = () => {
       </Row>
 
       <Row className="py-3 bg-info">
-        <Col><strong>{stats.count}</strong> activités</Col>
-        <Col><strong>{(Math.round(stats.totalDistance / 1000 * 10) / 10).toLocaleString('fr-FR')}</strong> km</Col>
-        <Col><strong>{Math.floor(stats.totalDuration / 3600)}</strong>h <strong>{Math.floor((stats.totalDuration % 3600) / 60)}</strong>m</Col>
-        <Col><strong>{strSpeed(stats.totalDistance / stats.totalDuration)}</strong></Col>
-        <Col><strong>{stats.averagePower}</strong> W</Col>
+        <Col><strong>{stats.count || 0}</strong> activités</Col>
+        <Col><strong>{(Math.round(stats.totalDistance / 1000 * 10) / 10).toLocaleString('fr-FR') || 0}</strong> km</Col>
+        <Col><strong>{Math.floor(stats.totalDuration / 3600)}</strong>h <strong>{Math.floor((stats.totalDuration % 3600) / 60) || 0}</strong>m</Col>
+        <Col><strong>{strSpeed(stats.totalDistance / stats.totalDuration) || 0}</strong></Col>
+        <Col><strong>{stats.averagePower || 0}</strong> W</Col>
       </Row>
 
       <Row className="py-3 bg-info">
