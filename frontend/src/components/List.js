@@ -44,30 +44,35 @@ class List extends Component {
   }
 
   // Récupération des activités pour l'année donnée
+  D'après l'erreur, `response.data` n'est pas un tableau. Imprimons le contenu pour voir sa structure :
+
+
   getActivities(year) {
-    // Adapter l'URL en fonction de la sélection
     let url = year === "all" 
-      ? '/api/strava/activities_list' // Sans paramètre year pour tout récupérer
+      ? '/api/strava/activities_list' 
       : '/api/strava/activities_list?year=' + year;
-      // Appel de l'API
+      
     axios.get(url)
-    .then(
-      (response) => { 
-        // Les activités sont dans le champ doc de chaque objet
-        const activities = response.data.map(item => item.doc);
-        this.setState({ 
-          activitiesList: activities,
-          isLoading: false // données chargées
-        }, () => {
-          this.calculateStats(activities);
-        });
+      .then(response => { 
+        console.log('Response data:', response.data);
+        
+        if (response.data && Object.values(response.data)) {
+          const activities = Object.values(response.data).map(item => item.doc);
+          
+          this.setState({ 
+            activitiesList: activities,
+            isLoading: false 
+          }, () => {
+            this.calculateStats(activities);
+          });
+        }
       })
-    .catch(error => { 
-        console.log("ERREUR de l'API  : " + error);
+      .catch(error => {
+        console.error("API error:", error);
         this.setState({ isLoading: false });
-      }
-    )
+      });
   }
+
 
   render() {
     if (this.state.isLoading) {
