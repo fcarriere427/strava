@@ -33,16 +33,16 @@ class ActivitySummary extends Component {
               <span className="fw-light"><br/>{time_str}</span>
             </p>
           </Col>
-          <Col  className="fw-bold text-end" xs="2">
+          <Col  className="fw-bold text-end" xs="1">
             <p>{(Math.round(this.props.data.doc.distance / 1000 * 100) / 100).toLocaleString('fr-FR')} km</p>
           </Col>
-          <Col className="text-end" xs="2">
+          <Col className="text-end" xs="1">
             <p>{strTime(this.props.data.doc.moving_time)}</p>
           </Col>
-          <Col className="text-end" xs="2">
+          <Col className="text-end" xs="1">
             <p>{strSpeed(this.props.data.doc.average_speed)}</p>
           </Col>
-          <Col className="text-end" xs="2">
+          <Col className="text-end" xs="1">
             <p>{this.props.data.doc.weighted_average_watts} W</p>
           </Col>
           <Col className="fw-light text-start" xs="3">
