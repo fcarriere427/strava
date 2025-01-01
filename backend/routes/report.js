@@ -9,7 +9,7 @@ module.exports = {
                 year: req.query.year,
                 target: req.query.target
             });
-            const yearlyTarget = parseInt(req.query.target) || 1200; // Valeur par défaut si non spécifiée
+            const yearlyTarget = parseInt(req.query.target);
             db.getYearlyReport(req.query.year, yearlyTarget)
             .then((data) => {
                 res.setHeader('content-type', 'application/json');

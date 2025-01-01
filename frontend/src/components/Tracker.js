@@ -55,9 +55,10 @@ class Tracker extends Component {
   }
 
   resetTarget() {
-    targetManager.set(1200);  // Sauvegarde dans localStorage
+    const target = 1000;
+    targetManager.set(target);  // Sauvegarde dans localStorage
     this.setState({
-      currentTarget: 1200
+      currentTarget: target
     });
   }
   render() {
