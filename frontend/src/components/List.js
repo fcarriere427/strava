@@ -51,18 +51,13 @@ class List extends Component {
       
     axios.get(url)
       .then(response => { 
-        console.log('Response data:', response.data);
-        
-        if (response.data && Object.values(response.data)) {
-          const activities = Object.values(response.data).map(item => item.doc);
-          
-          this.setState({ 
-            activitiesList: activities,
-            isLoading: false 
-          }, () => {
-            this.calculateStats(activities);
-          });
-        }
+        const activities = JSON.parse(response.data); // Parse la réponse JSON
+        this.setState({ 
+          activitiesList: activities,
+          isLoading: false 
+        }, () => {
+          this.calculateStats(activities);
+        });
       })
       .catch(error => {
         console.error("API error:", error);
