@@ -15,7 +15,8 @@ class List extends Component {
       stats: {
         count:0,
         totalDistance:0,
-        totalDuration:0
+        totalDuration:0,
+        averagePower:0
       },
       isLoading: true // état de chargement
     };
@@ -38,7 +39,8 @@ class List extends Component {
     const stats = {
       count: activities.length,
       totalDistance: activities.reduce((sum, activity) => sum + activity.doc.distance, 0),
-      totalDuration: activities.reduce((sum, activity) => sum + activity.doc.moving_time, 0)
+      totalDuration: activities.reduce((sum, activity) => sum + activity.doc.moving_time, 0),
+      averagePower: Math.round(activities.reduce((sum, activity) => sum + activity.doc.weighted_average_watts, 0) / activities.length)
     };
     this.setState({ stats });
   }
@@ -94,6 +96,9 @@ class List extends Component {
           </Col>
           <Col>
             <strong>{strSpeed(stats.totalDistance / stats.totalDuration)}</strong>
+          </Col>
+          <Col>
+            <strong>{stats.averagePower)}</strong> W
           </Col>
         </Row>
 
