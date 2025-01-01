@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const polyUtil = require('../utils/polylineFunctions.js');
 
-const MapAll = ({year}) => {
+const MapAll = () => {
   const [traces, setTraces] = useState([]);
   const [year, setYear] = useState("all");
 
