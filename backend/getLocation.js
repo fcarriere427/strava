@@ -4,6 +4,21 @@ class GeoCoder {
     }
 
     async getCommune(latitude, longitude) {
+         // Validation des coordonnées
+        if (!latitude || !longitude || 
+            isNaN(latitude) || isNaN(longitude) ||
+            latitude < -90 || latitude > 90 ||
+            longitude < -180 || longitude > 180) {
+            console.error(`Coordonnées invalides : lat=${latitude}, lng=${longitude}`);
+            return {
+                nom: "Localisation inconnue",
+                departement: "Non défini",
+                region: "Non défini",
+                pays: "Non défini",
+                source: 'error'
+            };
+        }
+
         // Respect de la limite de débit de Nominatim
         const now = Date.now();
         const limit = 1200; // 1 requête par seconde
@@ -14,35 +29,50 @@ class GeoCoder {
             }
         )}
         this.lastNominatimRequest = Date.now();
+
         try {
-            const response = await fetch(
-                `https://nominatim.openstreetmap.org/reverse?` +
-                `format=json&lat=${latitude}&lon=${longitude}&zoom=10&addressdetails=1`,
-                {
-                    headers: {
-                        'User-Agent': 'GeocodingApp/1.0'
-                    }
+            console.log(`Tentative de géocodage pour : lat=${latitude}, lng=${longitude}`);
+            const url = `https://nominatim.openstreetmap.org/reverse?` +
+              `format=json&lat=${latitude}&lon=${longitude}&zoom=10&addressdetails=1`;
+      
+            const response = await fetch(url, {
+                headers: {
+                    'User-Agent': 'GeocodingApp/1.0'
                 }
-            );
+            });
 
             if (!response.ok) {
-                throw new Error(`Erreur HTTP: ${response.status}`);
+                throw new Error(`Erreur HTTP: ${response.status} - ${await response.text()}`);
             }
 
             const data = await response.json();
 
+            if (!data || !data.address) {
+                throw new Error('Réponse invalide de Nominatim');
+            }
+
             return {
-                nom: data.address.city || data.address.town || data.address.village || data.address.municipality,
-                departement: data.address.county,
-                region: data.address.state,
-                pays: data.address.country,
+                nom: data.address.city || data.address.town || data.address.village || 
+                 data.address.municipality || "Non défini",
+                departement: data.address.county || "Non défini",
+                region: data.address.state || "Non défini",
+                pays: data.address.country || "Non défini",
                 source: 'nominatim'
             };
         } catch (error) {
-            console.error('Erreur Nominatim:', error);
+            console.error('Erreur Nominatim détaillée:', {
+                message: error.message,
+                coordinates: { lat: latitude, lng: longitude },
+                timestamp: new Date().toISOString()
+            });
+    
+            // On renvoie une localisation par défaut au lieu de propager l'erreur
             return {
-                error: error.message,
-                coordinates: { lat: latitude, lng: longitude }
+                nom: "Localisation inconnue",
+                departement: "Non défini",
+                region: "Non défini",
+                pays: "Non défini",
+                source: 'error'
             };
         }
     }
