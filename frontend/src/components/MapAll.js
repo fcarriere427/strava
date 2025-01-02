@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
-import { Container } from 'reactstrap';
 import { SelectYear } from './List/SelectYear';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
@@ -8,7 +7,6 @@ import axios from 'axios';
 const polyUtil = require('../utils/polylineFunctions.js');
 
 const MapAll = () => {
-  const [traces, setTraces] = useState([]);
   const [currentYear, setCurrentYear] = useState("*** All ***");
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
@@ -53,8 +51,6 @@ const MapAll = () => {
             id: activity.doc.id,
             trace: polyUtil.decode(activity.doc.map.summary_polyline)
           }));
-
-        setTraces(activitiesWithTraces);
 
         if (!mapRef.current) return;
 
