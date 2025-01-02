@@ -48,6 +48,15 @@ class ActivitySummary extends Component {
           <Col className="fw-light text-start" md="3" xs="4">
             <p>{this.props.data.doc.name}</p>
           </Col>
+          <Col className="text-end" md="2" xs="4">
+            <p>{this.props.data.doc.location_city}</p>
+          </Col>
+          <Col className="text-end" md="1" xs="4">
+            <p>{this.props.data.doc.location_state}</p>
+          </Col>
+          <Col className="fw-light text-start" md="3" xs="4">
+            <p>{this.props.data.doc.location_country}</p>
+          </Col>
         </Row>  
       </Container>
     )

@@ -2,12 +2,19 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap'
 import { ActivitySummaryWithNavigate } from './List/ActivitySummary'
 import { SelectYear } from './List/SelectYear'
+import LocationFilters from './List/LocationFilters'
 import { strSpeed } from '../utils/functions'
 import axios from 'axios';
 
 const List = () => {
-  const [activitiesList, setActivitiesList] = useState([]);
+  const [allActivities, setAllActivities] = useState([]); // Toutes les activités non filtrées
+  const [filteredActivities, setFilteredActivities] = useState([]); // Activités après filtrage
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear().toString());
+  const [locationFilters, setLocationFilters] = useState({
+    city: 'all',
+    region: 'all',
+    country: 'all'
+  });
   const [stats, setStats] = useState({
     count: 0,
     totalDistance: 0,
@@ -40,7 +47,8 @@ const List = () => {
         ? '/api/strava/activities_list' 
         : `/api/strava/activities_list?year=${year}`;
       const response = await axios.get(url);
-      setActivitiesList(response.data);
+      setAllActivities(response.data);
+      setFilteredActivities(response.data);
       calculateStats(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -49,6 +57,35 @@ const List = () => {
     }
   }, [calculateStats]);
       
+   // Appliquer les filtres sur les activités
+   const applyFilters = useCallback(() => {
+    let filtered = [...allActivities];
+
+    if (locationFilters.city !== 'all') {
+      filtered = filtered.filter(activity => 
+        activity.doc.location_city === locationFilters.city
+      );
+    }
+    if (locationFilters.region !== 'all') {
+      filtered = filtered.filter(activity => 
+        activity.doc.location_state === locationFilters.region
+      );
+    }
+    if (locationFilters.country !== 'all') {
+      filtered = filtered.filter(activity => 
+        activity.doc.location_country === locationFilters.country
+      );
+    }
+    setFilteredActivities(filtered);
+    calculateStats(filtered);
+  }, [allActivities, locationFilters, calculateStats]);
+
+  // Effet pour appliquer les filtres quand ils changent
+  useEffect(() => {
+    applyFilters();
+  }, [locationFilters, applyFilters]);
+
+  // Effet initial pour charger les activités
   useEffect(() => {
     getActivities(currentYear);
   }, [currentYear, getActivities]);
@@ -59,6 +96,10 @@ const List = () => {
     setCurrentYear(value);
     getActivities(year);
   }, [getActivities]);
+
+  const handleLocationFilterChange = useCallback((filters) => {
+    setLocationFilters(filters);
+  }, []);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -73,6 +114,11 @@ const List = () => {
         />
       </Row>
 
+      <LocationFilters
+        activities={allActivities}
+        onFilterChange={handleLocationFilterChange}
+      />
+
       <Row className="py-3 bg-info">
         <Col><strong>{stats.count || 0}</strong> activités</Col>
         <Col><strong>{(Math.round(stats.totalDistance / 1000 * 10) / 10).toLocaleString('fr-FR') || 0}</strong> km</Col>
@@ -82,7 +128,7 @@ const List = () => {
       </Row>
 
       <Row className="py-3 bg-info">
-        {activitiesList.map((d, index) =>
+        {filteredActivities.map((d, index) =>
           <ActivitySummaryWithNavigate data={d} key={index} />
         )}
       </Row>
