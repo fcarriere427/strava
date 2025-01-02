@@ -23,10 +23,10 @@ class ActivitySummary extends Component {
     return(
       <Container className="bg-light text-black border">
         <Row className="align-items-center">
-          <Col className="fw-bold" md="2" xs="4">
+          <Col className="fw-bold" md="1" xs="4">
             <p> 
               <button
-                className="btn btn-link border-0 shadow-none" 
+                className="btn btn-link border-0 shadow-none p-0" 
                 onClick={this.handleClick}>
                   {date_str}
                 </button>
