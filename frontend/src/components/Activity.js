@@ -1,6 +1,6 @@
-import React, { useState, useNavigate, useLocation } from 'react';
+import React, { useState, useEffect, useCallback, useNavigate, useLocation, useParams } from 'react';
 import { Container, Row, Col } from 'reactstrap'
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import { strTime, strDate, strSpeed } from "../utils/functions"
 import Map from "./Activity/Map";
 const axios = require('axios').default;
@@ -8,6 +8,7 @@ const axios = require('axios').default;
 const Activity = () => {
   const navigate = useNavigate();
   const { search } = useLocation();
+  const { id } = useParams(); // Récupère le paramètre id de l'URL
   const returnParams = new URLSearchParams(search).get('return');
   const [activity, setActivity] = useState({
     start_latlng: [0, 0], // Default value
