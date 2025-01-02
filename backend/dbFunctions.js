@@ -109,6 +109,9 @@ async function insertNew(data, stravaDb){
             console.log(`start_latlng de l'activité: [${lat}, ${lng}]`);
 
             // Récupération de la localisation
+            // Dans la fonction insertNew de dbFunctions.js
+            console.log('Type of GeoCoder:', typeof GeoCoder);
+            console.log('GeoCoder class:', GeoCoder);
             const geocoder = new GeoCoder();
             const location = await geocoder.getCommune(lat, lng);
             console.log(`retour de l'API Nominatim: ${location.nom}, ${location.departement}, ${location.pays}`);
