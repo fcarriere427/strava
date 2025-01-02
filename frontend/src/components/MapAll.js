@@ -10,15 +10,17 @@ const polyUtil = require('../utils/polylineFunctions.js');
 const MapAll = () => {
   const [traces, setTraces] = useState([]);
   const [currentYear, setCurrentYear] = useState("*** All ***");
+  const [mapCenter, setMapCenter] = useState([48.8534, 2.3488]); // Paris par défaut
 
   useEffect(() => {
-    const year = currentYear === "*** All ***" ? "all" : currentYear;
-    const url = year === "all" 
-      ? '/api/strava/activities_list' 
-      : `/api/strava/activities_list?year=${year}`;
-      
-    axios.get(url)
-      .then(response => {
+    const fetchTraces = async () => {
+      try {
+        const year = currentYear === "*** All ***" ? "all" : currentYear;
+        const url = year === "all" 
+          ? '/api/strava/activities_list' 
+          : `/api/strava/activities_list?year=${year}`;
+        
+        const response = await axios.get(url);
         const activitiesWithTraces = response.data
           .filter(activity => activity.doc.map?.summary_polyline)
           .map(activity => ({
@@ -26,8 +28,14 @@ const MapAll = () => {
             trace: polyUtil.decode(activity.doc.map.summary_polyline)
           }));
         setTraces(activitiesWithTraces);
-      });
+      } catch (error) {
+        console.error("Erreur lors de la récupération des traces:", error);
+      }
+    };
+
+    fetchTraces();
   }, [currentYear]);
+
 
   const handleYearChange = (evt) => {
     setCurrentYear(evt.target.value);
@@ -42,7 +50,7 @@ const MapAll = () => {
         </Row>
 
         <MapContainer 
-          center={[48.8534, 2.3488]} 
+          center={mapCenter} 
           zoom={13} 
           style={{ height: "600px", width: "100%" }}
         >
