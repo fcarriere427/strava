@@ -37,12 +37,12 @@ class GaugeChart extends Component {
       Math.sin(angle - (Math.PI / 2)) * offset,
     ] 
 
-    console.log("GaugeChart values:", {
-      current,
-      targetValue,
-      value,
-      markerLocation: getCoordsOnArc(angleScale(percentScale(value)), 1 - ((1 - 0.65) / 2))
-    });
+    // console.log("GaugeChart values:", {
+    //   current,
+    //   targetValue,
+    //   value,
+    //   markerLocation: getCoordsOnArc(angleScale(percentScale(value)), 1 - ((1 - 0.65) / 2))
+    // });
     
     const backgroundArc = arc()
       .innerRadius(0.65)

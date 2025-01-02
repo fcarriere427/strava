@@ -30,14 +30,14 @@ class UpdateBar extends Component {
 
   // Actions pour les boutons "update" & "reload"
   updateActivities() {
-    console.log("on va lancer updateActivities");
+    // console.log("on va lancer updateActivities");
     let url = '/api/strava/update';
     this.setState({ message : "fetching activities..." });
     axios.get(url)
     .then(
       (response) => {
         this.setState({ message : response.data });
-        console.log(this.state.message + " activities fetched!");
+        console.log("update Activities: " + this.state.message + " activities fetched!");
         this.props.onChange();
       },
       (error) => {

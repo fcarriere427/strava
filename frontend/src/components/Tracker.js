@@ -19,7 +19,7 @@ class Tracker extends Component {
   }
 
   componentDidMount(){
-    console.log("Montage du composant");
+    // console.log("Montage du composant");
     this.updateYearDistance();
   }
 
@@ -32,7 +32,7 @@ class Tracker extends Component {
       (response) => {
         // Conversion explicite en nombre et vérification
         const distance = parseFloat(response.data[year]) || 0;
-        console.log("Distance reçue:", distance, typeof distance); // Debug
+        // console.log("Distance reçue:", distance, typeof distance); // Debug
         this.setState({ 
           yearDistance: distance,
           isLoading: false
@@ -62,7 +62,7 @@ class Tracker extends Component {
     });
   }
   render() {
-    console.log("Rendu avec yearDistance:", this.state.yearDistance);
+    // console.log("Rendu avec yearDistance:", this.state.yearDistance);
     return (
       <Container fluid className='bg-grey text-black text-center'>
         <Row className='mt-3 mb-3'>
