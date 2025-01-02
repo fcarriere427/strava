@@ -30,7 +30,7 @@ class ActivitySummary extends Component {
                 onClick={this.handleClick}>
                   {date_str}
                 </button>
-              <span className="fw-light"><br/>{time_str}</span>
+              <span className="fw-light text-center"><br/>{time_str}</span>
             </p>
           </Col>
           <Col  className="fw-bold text-end" md="1" xs="4">
@@ -45,13 +45,13 @@ class ActivitySummary extends Component {
           <Col className="text-end" md="1" xs="4">
             <p>{this.props.data.doc.weighted_average_watts} W</p>
           </Col>
-          <Col className="fw-light text-start" md="3" xs="4">
+          <Col className="fw-light text-start" md="2" xs="4">
             <p>{this.props.data.doc.name}</p>
           </Col>
           <Col className="text-end" md="1" xs="4">
             <p>{this.props.data.doc.location_city}</p>
           </Col>
-          <Col className="text-end" md="1" xs="4">
+          <Col className="text-end" md="2" xs="4">
             <p>{this.props.data.doc.location_state}</p>
           </Col>
           <Col className="fw-light text-start" md="1" xs="4">
