@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap'
 import { useSearchParams } from 'react-router-dom';  // Ajouter cet import
-import { ActivitySummary } from './List/ActivitySummary'
+import ActivitySummary from './List/ActivitySummary'
 import Filters from './List/Filters'
 import { strSpeed } from '../utils/functions'
 const axios = require('axios').default;
@@ -144,7 +144,7 @@ const List = () => {
 
       <Row className="py-3 bg-info">
         {filteredActivities.map((d, index) =>
-          <ActivitySummary data={d} key={index} />
+          <ActivitySummary data={d} key={index} searchParams={searchParams}/>
         )}
       </Row>
     </Container>

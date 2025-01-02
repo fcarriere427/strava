@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from 'reactstrap';
 import { strTime, strSpeed } from '../../utils/functions';
 
-const ActivitySummary = ({ data }) => {
+const ActivitySummary = ({ data, searchParams }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
