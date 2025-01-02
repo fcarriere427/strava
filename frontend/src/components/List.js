@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { ActivitySummaryWithNavigate } from './List/ActivitySummary'
 import Filters from './List/Filters'
 import { strSpeed } from '../utils/functions'
-import axios from 'axios';
+import axios from 'axios/axios';
 
 const List = () => {
   const [allActivities, setAllActivities] = useState([]); // Toutes les activités non filtrées

@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { useParams } from 'react-router-dom';
 import { strTime, strDate, strSpeed } from "../utils/functions"
 import { Map } from "./Activity/Map";
-import axios from 'axios';
+import axios from 'axios/axios';
 
 class Activity extends Component {
 
