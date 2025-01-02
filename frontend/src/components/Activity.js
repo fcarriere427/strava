@@ -29,7 +29,7 @@ const Activity = () => {
     getActivity();
   }, [id]);
   
-  if (this.state.isLoading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
     
