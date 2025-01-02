@@ -4,12 +4,14 @@ import { Alert } from 'reactstrap';
 import { decode } from '@mapbox/polyline';
 
 const Map = ({ activity }) => {
-  // Vérification et décodage de la polyline
-  const positions = activity.map?.summary_polyline ? decode(activity.map.summary_polyline) : null;
-  const hasValidRoute = positions && positions.length > 0;
+ // Vérifications de sécurité pour les coordonnées
+ const positions = activity?.map?.summary_polyline ? decode(activity.map.summary_polyline) : null;
+ const hasValidRoute = positions && positions.length > 0;
 
-  // Si on n'a pas de point de départ, on utilise des coordonnées par défaut
-  const startPoint = activity.start_latlng || [47.58550, -2.99804]; // St Phi par défaut ;-)
+ // Validation plus robuste du point de départ
+ const startPoint = Array.isArray(activity?.start_latlng) && activity.start_latlng.length >= 2
+   ? activity.start_latlng
+   : [47.58550, -2.99804]; // St Phi par défaut
 
   if (!hasValidRoute) {
     return (
@@ -20,7 +22,7 @@ const Map = ({ activity }) => {
         <MapContainer
           center={startPoint}
           zoom={13}
-          className="flex-grow-1"
+          style={{height: '90vh', width: '100%'}}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -31,42 +33,67 @@ const Map = ({ activity }) => {
     );
   }
 
-  // Calcul des limites de la carte
-  const bounds = positions.reduce(
-    (bounds, position) => {
-      return [
-        [
-          Math.min(bounds[0][0], position[0]),
-          Math.min(bounds[0][1], position[1])
-        ],
-        [
-          Math.max(bounds[1][0], position[0]),
-          Math.max(bounds[1][1], position[1])
-        ]
-      ];
-    },
-    [[positions[0][0], positions[0][1]], [positions[0][0], positions[0][1]]]
-  );
+  try {
+    // Calcul des limites de la carte avec vérification supplémentaire
+      const bounds = positions.reduce(
+      (bounds, position) => {
+        if (!Array.isArray(position) || position.length < 2) {
+          return bounds; // Ignore les positions invalides
+        }
+        return [
+          [
+            Math.min(bounds[0][0], position[0]),
+            Math.min(bounds[0][1], position[1])
+          ],
+          [
+            Math.max(bounds[1][0], position[0]),
+            Math.max(bounds[1][1], position[1])
+          ]
+        ];
+      },
+      [[positions[0][0], positions[0][1]], [positions[0][0], positions[0][1]]]
+    );
 
-  return (
-    <MapContainer
-      bounds={bounds}
-      style={{height: '90vh', width: '100%'}}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {positions && (
-        <Polyline
-          positions={positions}
-          color="purple"
-          weight={3}
-          opacity={0.7}
+    return (
+      <MapContainer
+        bounds={bounds}
+        style={{height: '90vh', width: '100%'}}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-      )}
-    </MapContainer>
-  );
+        {positions && (
+          <Polyline
+            positions={positions}
+            color="purple"
+            weight={3}
+            opacity={0.7}
+          />
+        )}
+      </MapContainer>
+    );
+  } catch (error) {
+
+    // Fallback en cas d'erreur de calcul des bounds
+    return (
+      <div className="h-100 d-flex flex-column">
+        <Alert color="warning" className="m-2" fade={false}>
+          Erreur lors du chargement de la carte
+        </Alert>
+        <MapContainer
+          center={startPoint}
+          zoom={13}
+          style={{height: '90vh', width: '100%'}}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+        </MapContainer>
+      </div>
+    );
+  }
 };
 
 export {
