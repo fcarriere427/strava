@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { strTime, strDate, strSpeed } from "../utils/functions"
 import Map from "./Activity/Map";
 const axios = require('axios').default;
 
 const Activity = () => {
   const { id } = useParams(); // Récupère le paramètre id de l'URL
+  const navigate = useNavigate();
+  const location = useLocation();
   const [activity, setActivity] = useState({
     start_latlng: [0, 0],
     map: {}
   });
   const [isLoading, setIsLoading] = useState(true);
   
+  const handleReturnClick = () => {
+    navigate(`/list${location.search}`);
+  };
+
   useEffect(() => {
     const getActivity = async () => {
       try {
@@ -64,7 +70,7 @@ const Activity = () => {
             <Row className="bg-white fw-light border ps-3">Region: {activity.location_state}</Row>
             <Row className="bg-white fw-light border ps-3">Country: {activity.location_country}</Row>
             <Row className="bg-white fw-light border ps-3">Id: {activity.id}</Row>
-            {/* <Row><button onClick={handleBack}>Retour à la liste</button></Row> */}
+            <Row><button onClick={handleReturnClick}>Retour à la liste</button></Row>
           </Col>
         </Row>
       </Container>
