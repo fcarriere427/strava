@@ -1,0 +1,11 @@
+update.js : getActivities (in strava.js)
+getActivities in strava.js : 
+- appel API officielle Strava
+- dbFun.updateDB
+updateDB in dbFunctions.js :
+- readID : 
+	* remplit un tableau existingID (local à dbFunction) avec les ID d'activities présentes dans la DB locale
+	* utilise les fonctions StravaDb (accès la DB locale) via nano
+- insertNew : 
+	* insère dans la DB locale les activities récupérées de Strava, mais dont l'ID n'est pas dans existingID
+

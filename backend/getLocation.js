@@ -124,7 +124,7 @@ class GeoCoder {
 }
 
 module.exports = {
-    getLocation
+    getCoder
   }
 
 // Exemples d'utilisation :

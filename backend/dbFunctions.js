@@ -1,7 +1,7 @@
 // Gestion de la BDD : accès (création des activités), RAZ de la BDD
 
 // Fonction de géolocalisation
-const geoLoc = require('./getLocation.js');
+const GeoCoder = require('./getLocation.js');
 
 // Récupération des clés pour se connecter à couchDB
 const couchKeys = require('./keys/couchDB.json');
@@ -109,7 +109,7 @@ async function insertNew(data, stravaDb){
             console.log(`start_latlng de l'activité: [${lat}, ${lng}]`);
 
             // Récupération de la localisation
-            const geocoder = new geoLoc.Geocoder();
+            const geocoder = new GeoCoder();
             const location = await geocoder.getCommune(lat, lng);
             console.log(`retour de l'API Nominatim: ${location.nom}, ${location.departement}, ${location.pays}`);
 
