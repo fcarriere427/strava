@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap'
 import { useParams } from 'react-router-dom';
 import { strTime, strDate, strSpeed } from "../utils/functions"
-import { Map } from "./Activity/Map";
+import Map from "./Activity/Map";
 const axios = require('axios').default;
 
 class Activity extends Component {
