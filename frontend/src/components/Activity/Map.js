@@ -9,36 +9,42 @@ const Map = ({ activity }) => {
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
+    // S'assurer que le conteneur est disponible
     if (!mapContainerRef.current) return;
-
-    const positions = activity?.map?.summary_polyline ? decode(activity.map.summary_polyline) : null;
-    const hasValidRoute = positions && positions.length > 0;
-    const startPoint = Array.isArray(activity?.start_latlng) && activity.start_latlng.length >= 2
-      ? activity.start_latlng
-      : [47.58550, -2.99804];
-
-    // Initialiser la carte si elle n'existe pas
-    if (!mapRef.current) {
+  
+    // Attendre un tick pour s'assurer que le DOM est prêt
+    setTimeout(() => {
+      // Nettoyer la carte existante si elle existe
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+  
+      const positions = activity?.map?.summary_polyline ? decode(activity.map.summary_polyline) : null;
+      const hasValidRoute = positions && positions.length > 0;
+      const startPoint = Array.isArray(activity?.start_latlng) && activity.start_latlng.length >= 2
+        ? activity.start_latlng
+        : [47.58550, -2.99804];
+  
+      // Créer la nouvelle carte
       mapRef.current = L.map(mapContainerRef.current).setView(startPoint, 13);
+      
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(mapRef.current);
-    }
-
-    // Si nous avons une route valide
-    if (hasValidRoute) {
-      // Calcul des limites
-      const bounds = L.latLngBounds(positions);
-      mapRef.current.fitBounds(bounds);
-
-      // Ajouter la polyline
-      L.polyline(positions, {
-        color: 'purple',
-        weight: 3,
-        opacity: 0.7
-      }).addTo(mapRef.current);
-    }
-
+  
+      if (hasValidRoute) {
+        const bounds = L.latLngBounds(positions);
+        mapRef.current.fitBounds(bounds);
+  
+        L.polyline(positions, {
+          color: 'purple',
+          weight: 3,
+          opacity: 0.7
+        }).addTo(mapRef.current);
+      }
+    }, 0);
+  
     // Nettoyage
     return () => {
       if (mapRef.current) {
