@@ -1,3 +1,7 @@
+Pour récupération de la géolocalisation
+
+
+= = = POur récupération à la volée de l'import d'une nouvelle activité = = = 
 update.js : getActivities (in strava.js)
 getActivities in strava.js : 
 - appel API officielle Strava

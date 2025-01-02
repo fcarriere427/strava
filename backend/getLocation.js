@@ -1,7 +1,7 @@
 // /!\ Clés Google : suppose qu'on a fait les démarches sur Google cloud
 const key = require('./keys/google.json');
 // Récupération des clés et tokens Strava
-var api_key = key.api_key;
+var googleApiKey = key.api_key;
 
 class GeoCoder {
     constructor(googleApiKey = null) {
@@ -56,12 +56,12 @@ class GeoCoder {
         // Respect de la limite de débit de Nominatim
         const now = Date.now();
         if (now - this.lastNominatimRequest < 1000) {
-            await new Promise(resolve => 
-                setTimeout(resolve, 1000 - (now - this.lastNominatimRequest))
-            );
-        }
+            await new Promise(resolve => {
+                setTimeout(resolve, 1000 - (now - this.lastNominatimRequest));
+                console.log('Attente de 1 seconde pour respecter la limite de débit de Nominatim...');
+            }
+        )}
         this.lastNominatimRequest = Date.now();
-
         try {
             const response = await fetch(
                 `https://nominatim.openstreetmap.org/reverse?` +

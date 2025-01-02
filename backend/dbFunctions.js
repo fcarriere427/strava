@@ -57,21 +57,17 @@ function readID(stravaDb) {
     // pour chaque ligne de la BDD, on va écrire un élément dans le tableau existingID
     stravaDb.list()
     .then((body) => {
-      if (body.rows.length == 0){
-        // si la BDD est vide, on ne fait rien
-        //console.log("      ... pas d\'ID existant, la BDD est vide !");
+      if (body.rows.length == 0){ // si la BDD est vide, on ne fait rien
         resolve();
       }
-      else {
-        // sinon on remplit le tableau existingID
+      else { // sinon on remplit le tableau existingID
         body.rows.forEach((item, i) => {
           stravaDb.get(body.rows[i].id)
           .then((doc) => {
             existingID[i] = doc["id"];
             count = count + 1;
             // console.log('   ... count = ' + count);
-            if(count==body.rows.length){
-              //console.log('      ... tableau des ID Strava mis à jour !');
+            if(count==body.rows.length){ //console.log('      ... tableau des ID Strava mis à jour !');
               resolve();
             }
           })
@@ -106,20 +102,15 @@ async function insertNew(data, stravaDb){
             // Arrondir les coordonnées à 5 décimales
             const lat = Math.round(activity.start_latlng[0] * 100000) / 100000;
             const lng = Math.round(activity.start_latlng[1] * 100000) / 100000;
-            console.log(`start_latlng de l'activité: [${lat}, ${lng}]`);
-
+            
             // Récupération de la localisation
-            // Dans la fonction insertNew de dbFunctions.js
-            console.log('Type of GeoCoder:', typeof GeoCoder);
-            console.log('GeoCoder class:', GeoCoder);
             const geocoder = new GeoCoder();
             const location = await geocoder.getCommune(lat, lng);
-            console.log(`retour de l'API Nominatim: ${location.nom}, ${location.departement}, ${location.pays}`);
-
+            
             // Mise à jour des informations de localisation
-            activity.location_city = location.nom || "Non défini";
-            activity.location_state = location.departement || "Non défini";
-            activity.location_country = location.pays || "Non défini";
+            activity.location_city = location.nom || "Undefined";
+            activity.location_state = location.departement || "Undefined";
+            activity.location_country = location.pays || "Undefined";
 
             // Insertion dans la BDD
             await insertIntoDb(activity);
