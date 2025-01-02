@@ -1,12 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';  // Notez le changement ici
+import { createRoot } from 'react-dom/client';
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Header, Footer, Tracker, List, Report, MapAll, Activity } from './components';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
     <Router>
       <Header name="Florian"/>
