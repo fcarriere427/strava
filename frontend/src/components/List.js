@@ -132,6 +132,7 @@ const List = () => {
         onFilterChange={handleLocationFilterChange}
         currentYear={currentYear}
         updateHandler={handleYearChange}
+        locationFilters={locationFilters}
       />
 
       <Row className="py-3 bg-info">

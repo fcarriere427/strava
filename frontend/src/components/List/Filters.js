@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, FormGroup, Label, Input } from 'reactstrap';
 
-const Filters = ({ activities, onFilterChange, currentYear, updateHandler }) => {
+const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locationFilters }) => {
   // États pour stocker les options uniques
-  const [cities, setCities] = useState([]);
-  const [regions, setRegions] = useState([]);
-  const [countries, setCountries] = useState([]);
+  const [cities, setCities] = useState(locationFilters.city);
+  const [regions, setRegions] = useState(locationFilters.region);
+  const [countries, setCountries] = useState(locationFilters.country);
   const [years, setYears] = useState([]);
 
   // Génération des années
