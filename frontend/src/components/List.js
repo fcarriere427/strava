@@ -1,18 +1,23 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap'
+import { useSearchParams } from 'react-router-dom';  // Ajouter cet import
 import { ActivitySummaryWithNavigate } from './List/ActivitySummary'
 import Filters from './List/Filters'
 import { strSpeed } from '../utils/functions'
 const axios = require('axios').default;
 
 const List = () => {
+  const [searchParams, setSearchParams] = useSearchParams();  // Ajout des searchParams
+  
   const [allActivities, setAllActivities] = useState([]); // Toutes les activités non filtrées
   const [filteredActivities, setFilteredActivities] = useState([]); // Activités après filtrage
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear().toString());
+  const [currentYear, setCurrentYear]  = useState(
+    searchParams.get('year') || new Date().getFullYear().toString()
+  );
   const [locationFilters, setLocationFilters] = useState({
-    city: 'all',
-    region: 'all',
-    country: 'all'
+    city: searchParams.get('city') || 'all',
+    region: searchParams.get('region') || 'all',
+    country: searchParams.get('country') || 'all'
   });
   const [stats, setStats] = useState({
     count: 0,
@@ -93,12 +98,27 @@ const List = () => {
     const value = evt.target.value;
     const year = value === "*** All ***" ? "all" : value;
     setCurrentYear(value);
+    setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev);
+      newParams.set('year', value);
+      return newParams;
+    });
     getActivities(year);
-  }, [getActivities]);
+  }, [getActivities, setSearchParams]);
 
   const handleLocationFilterChange = useCallback((filters) => {
-    setLocationFilters(filters);
-  }, []);
+    setLocationFilters(filters);setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev);
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value !== 'all') {
+          newParams.set(key, value);
+        } else {
+          newParams.delete(key);
+        }
+      });
+      return newParams;
+    });
+  }, [setSearchParams]);
 
   if (isLoading) {
     return <div>Loading...</div>;

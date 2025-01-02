@@ -41,6 +41,18 @@ class Activity extends Component {
 
   // Référence, ce qu'on peut afficher (= récupéré dans Activity) : https://developers.strava.com/docs/reference/#api-models-SummaryActivity
   render() {
+
+    const navigate = useNavigate();
+    const { search } = useLocation();
+    const returnParams = new URLSearchParams(search).get('return');
+
+    const handleBack = () => {
+      if (returnParams) {
+        navigate(`/list${returnParams}`);
+      } else {
+        navigate('/list');
+      }
+    };
     
     if (this.state.isLoading) {
       return <div>Loading...</div>;
@@ -77,6 +89,7 @@ class Activity extends Component {
               <Row className="bg-white fw-light border ps-3">Region: {this.state.activity.location_state}</Row>
               <Row className="bg-white fw-light border ps-3">Country: {this.state.activity.location_country}</Row>
               <Row className="bg-white fw-light border ps-3">Id: {this.state.activity.id}</Row>
+              <Row className="bg-white fw-light border ps-3"><button onClick={handleBack}>Retour à la liste</button></Row>
             </Col>
           </Row>
         </Container>

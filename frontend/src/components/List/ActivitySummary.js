@@ -11,7 +11,7 @@ class ActivitySummary extends Component {
    }
 
   handleClick = () => {
-    this.props.navigate(`/activity/${this.props.data.doc.id}`);
+    this.props.navigate(`/activity/${this.props.data.doc.id}?return=${encodeURIComponent(window.location.search)}`);
   };
 
   render(){
