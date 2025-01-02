@@ -96,9 +96,7 @@ const Map = ({ activity }) => {
   }
 };
 
-export {
-  Map
-};
+export default Map;
 
 // import React from 'react';
 // import { MapContainer, TileLayer, Polyline, useMap } from "react-leaflet";
