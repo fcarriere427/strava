@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useNavigate, useLocation, useParams } from 'react';
+import React, { useState, useEffect, useCallback, useNavigate, useParams } from 'react';
 import { Container, Row, Col } from 'reactstrap'
 //import { useParams } from 'react-router-dom';
 import { strTime, strDate, strSpeed } from "../utils/functions"
@@ -7,16 +7,14 @@ const axios = require('axios').default;
 
 const Activity = () => {
   const navigate = useNavigate();
-  const { search } = useLocation();
   const { id } = useParams(); // Récupère le paramètre id de l'URL
-  const returnParams = new URLSearchParams(search).get('return');
   const [activity, setActivity] = useState({
     start_latlng: [0, 0], // Default value
     map: {} // Default value
   });
   const [isLoading, setIsLoading] = useState(true);
   
-  const getActivity = useCallback(async (id) => {
+  const getActivity = useEffect(async (id) => {
     try{
       const url = '/api/strava/activity?id=' + id;
       const response = await axios.get(url);
@@ -33,13 +31,9 @@ const Activity = () => {
     getActivity(id);
   }, [activity, getActivity]);
 
-  const handleBack = useCallback(() => {
-    if (returnParams) {
-      navigate(`/list${returnParams}`);
-    } else {
-      navigate('/list');
-    }
-  });
+  const handleBack = useEffect(() => {
+      navigate(-1);
+    });
 
   if (this.state.isLoading) {
     return <div>Loading...</div>;
