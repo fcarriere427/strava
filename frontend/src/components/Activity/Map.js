@@ -1,84 +1,66 @@
-import React, { useMemo} from 'react';
-import { MapContainer, TileLayer, Polyline } from 'react-leaflet';
+import React, { useEffect, useRef } from 'react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { Alert } from 'reactstrap';
 import { decode } from '@mapbox/polyline';
 
 const Map = ({ activity }) => {
-  const { positions, hasValidRoute } = useMemo(() => {
+  const mapRef = useRef(null);
+  const mapContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (!mapContainerRef.current) return;
+
     const positions = activity?.map?.summary_polyline ? decode(activity.map.summary_polyline) : null;
     const hasValidRoute = positions && positions.length > 0;
-    return { positions, hasValidRoute };
-  }, [activity]);
-
-  const mapContent = useMemo(() => {
-  
     const startPoint = Array.isArray(activity?.start_latlng) && activity.start_latlng.length >= 2
       ? activity.start_latlng
       : [47.58550, -2.99804];
 
-    if (!hasValidRoute) {
-      return (
-        <MapContainer
-          center={startPoint}
-          zoom={13}
-          style={{height: '90vh', width: '100%'}}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-        </MapContainer>
-      );
+    // Initialiser la carte si elle n'existe pas
+    if (!mapRef.current) {
+      mapRef.current = L.map(mapContainerRef.current).setView(startPoint, 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(mapRef.current);
     }
-  
-  const bounds = positions.reduce(
-    (bounds, position) => {
-      if (!Array.isArray(position) || position.length < 2) {
-        return bounds;
-      }
-      return [
-        [
-          Math.min(bounds[0][0], position[0]),
-          Math.min(bounds[0][1], position[1])
-        ],
-        [
-          Math.max(bounds[1][0], position[0]),
-          Math.max(bounds[1][1], position[1])
-        ]
-      ];
-    },
-    [[positions[0][0], positions[0][1]], [positions[0][0], positions[0][1]]]
-  );
 
-  return (
-    <MapContainer
-        bounds={bounds}
-        style={{height: '90vh', width: '100%'}}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Polyline
-          positions={positions}
-          color="purple"
-          weight={3}
-          opacity={0.7}
-        />
-      </MapContainer>
-    );
-  }, [hasValidRoute, positions, activity]);
+    // Si nous avons une route valide
+    if (hasValidRoute) {
+      // Calcul des limites
+      const bounds = L.latLngBounds(positions);
+      mapRef.current.fitBounds(bounds);
+
+      // Ajouter la polyline
+      L.polyline(positions, {
+        color: 'purple',
+        weight: 3,
+        opacity: 0.7
+      }).addTo(mapRef.current);
+    }
+
+    // Nettoyage
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, [activity]);
 
   return (
     <div className="h-100 d-flex flex-column">
-      {!hasValidRoute && (
+      {activity?.map?.summary_polyline ? null : (
         <Alert color="warning" className="m-2" fade={false}>
           Pas de tracé GPS disponible pour cette activité
         </Alert>
       )}
-      {mapContent}
+      <div 
+        ref={mapContainerRef} 
+        style={{ height: '90vh', width: '100%' }}
+      />
     </div>
   );
 };
 
-export default Map; 
+export default Map;
