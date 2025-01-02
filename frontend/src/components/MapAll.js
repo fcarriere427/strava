@@ -1,21 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Polyline } from 'react-leaflet';
-import { Container, Row } from 'reactstrap'
-import { SelectYear} from './List/SelectYear'
+import React, { useEffect, useRef, useState } from 'react';
+import L from 'leaflet';
+import { Container } from 'reactstrap';
+import { SelectYear } from './List/SelectYear';
 import 'leaflet/dist/leaflet.css';
-import axios from 'axios';  // Modifié ici pour utiliser l'import ES6
-//const axios = require('axios').default;
+import axios from 'axios';
 
 const polyUtil = require('../utils/polylineFunctions.js');
 
 const MapAll = () => {
   const [traces, setTraces] = useState([]);
   const [currentYear, setCurrentYear] = useState("*** All ***");
-  const [mapCenter, setMapCenter] = useState([48.8534, 2.3488]); // Paris par défaut
+  const mapRef = useRef(null);
+  const mapContainerRef = useRef(null);
+  const polylinesRef = useRef([]);
 
+  // Premier useEffect pour initialiser la carte
   useEffect(() => {
-    const fetchTraces = async () => {
+    if (!mapContainerRef.current || mapRef.current) return;
+
+    const startPoint = [47.58550, -2.99804]; // St Phi par défaut
+    mapRef.current = L.map(mapContainerRef.current).setView(startPoint, 13);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mapRef.current);
+
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, []);
+
+  // Deuxième useEffect pour charger et afficher les traces
+  useEffect(() => {
+    const fetchAndDisplayTraces = async () => {
       try {
+        // Nettoyer les polylines existantes
+        polylinesRef.current.forEach(polyline => polyline.remove());
+        polylinesRef.current = [];
+
         const year = currentYear === "*** All ***" ? "all" : currentYear;
         const url = year === "all" 
           ? '/api/strava/activities_list' 
@@ -28,49 +53,55 @@ const MapAll = () => {
             id: activity.doc.id,
             trace: polyUtil.decode(activity.doc.map.summary_polyline)
           }));
+
         setTraces(activitiesWithTraces);
+
+        if (!mapRef.current) return;
+
+        // Calculer les limites globales
+        const bounds = activitiesWithTraces.reduce((totalBounds, activity) => {
+          const activityBounds = L.latLngBounds(activity.trace);
+          return totalBounds ? totalBounds.extend(activityBounds) : activityBounds;
+        }, null);
+
+        // Ajouter toutes les traces à la carte
+        activitiesWithTraces.forEach(trace => {
+          const polyline = L.polyline(trace.trace, {
+            color: 'purple',
+            weight: 3,
+            opacity: 0.5
+          }).addTo(mapRef.current);
+          polylinesRef.current.push(polyline);
+        });
+
+        // Ajuster la vue si on a des traces
+        if (bounds && activitiesWithTraces.length > 0) {
+          mapRef.current.fitBounds(bounds);
+        }
       } catch (error) {
         console.error("Erreur lors de la récupération des traces:", error);
       }
     };
 
-    fetchTraces();
+    fetchAndDisplayTraces();
   }, [currentYear]);
 
-
-  const handleYearChange = (evt) => {
-    setCurrentYear(evt.target.value);
-  };
-
   return (
-    <Container fluid className='bg-grey text-black text-center'>
-      {/* Remplacement de Row par une simple div pour éviter problème de Context ?!?  */}
-        <div className="mb-3">
-          <SelectYear 
-            currentYear={currentYear} 
-            updateHandler={handleYearChange} />
-        </div> 
+    <div className="bg-grey text-black text-center">
+      <div className="p-2">
+        <SelectYear 
+          currentYear={currentYear} 
+          updateHandler={(evt) => setCurrentYear(evt.target.value)}
+        />
+      </div>
 
-        <MapContainer 
-          center={mapCenter} 
-          zoom={13} 
-          style={{ height: "600px", width: "100%" }}
-        >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; OpenStreetMap contributors'
-            />
-            {traces.map(trace => (
-              <Polyline 
-                key={trace.id}
-                positions={trace.trace}
-                color="purple"
-                weight={3}
-                opacity={0.5}
-              />
-            ))}
-        </MapContainer>
-    </Container>
+      <div style={{ height: "calc(100vh - 100px)" }}>
+        <div 
+          ref={mapContainerRef} 
+          style={{ height: "100%", width: "100%" }}
+        />
+      </div>
+    </div>
   );
 };
 
