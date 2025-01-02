@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Row, Col } from 'reactstrap'
-import axios from 'axios/axios';
-//OLD = const axios = require('axios').default;
+const axios = require('axios').default;
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 class UpdateBar extends Component {

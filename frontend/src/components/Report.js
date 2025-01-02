@@ -5,7 +5,7 @@ import { SelectYearReport } from './Report/SelectYearReport';
 import { TargetSlider } from './Report/TargetSlider';
 import { targetManager } from '../utils/targetManager';
 
-import axios from 'axios/axios';
+const axios = require('axios').default;
 
 class Report extends Component {
     constructor(props) {

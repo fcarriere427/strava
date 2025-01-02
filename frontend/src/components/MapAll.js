@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Polyline } from 'react-leaflet';
 import { Container, Row } from 'reactstrap'
 import { SelectYear} from './List/SelectYear'
 import 'leaflet/dist/leaflet.css';
-import axios from 'axios/axios';
+const axios = require('axios').default;
 
 const polyUtil = require('../utils/polylineFunctions.js');
 

@@ -6,7 +6,7 @@ import { TargetBlock } from './Tracker/TargetBlock'
 import { UpdateBar } from './Tracker/UpdateBar'
 import { targetManager } from '../utils/targetManager';
 
-import axios from 'axios/axios';
+const axios = require('axios').default;
 
 class Tracker extends Component {
   constructor(props){
