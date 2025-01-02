@@ -14,7 +14,7 @@ const Map = ({ activity }) => {
   if (!hasValidRoute) {
     return (
       <div className="h-100 d-flex flex-column">
-        <Alert color="warning" className="m-2">
+        <Alert color="warning" className="m-2" fade={false}>
           Pas de tracé GPS disponible pour cette activité
         </Alert>
         <MapContainer
