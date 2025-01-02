@@ -123,9 +123,7 @@ class GeoCoder {
     }
 }
 
-module.exports = {
-    GeoCoder
-  }
+module.exports = GeoCoder;
 
 // Exemples d'utilisation :
 

@@ -1,7 +1,7 @@
 // Gestion de la BDD : accès (création des activités), RAZ de la BDD
 
 // Fonction de géolocalisation
-const GeoCoder = require('./getLocation.js');
+const GeoCoder = require('./getLocation');
 
 // Récupération des clés pour se connecter à couchDB
 const couchKeys = require('./keys/couchDB.json');
