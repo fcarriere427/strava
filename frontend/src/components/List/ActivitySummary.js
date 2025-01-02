@@ -23,7 +23,7 @@ class ActivitySummary extends Component {
     return(
       <Container className="bg-light text-black border">
         <Row className="align-items-center">
-          <Col className="fw-bold text-start" md="2" xs="4">
+          <Col className="fw-bold text-start" md="1" xs="4">
             <p> 
               <button
                 className="btn btn-link border-0 shadow-none" 
@@ -48,10 +48,10 @@ class ActivitySummary extends Component {
           <Col className="fw-light text-start" md="2" xs="4">
             <p>{this.props.data.doc.name}</p>
           </Col>
-          <Col className="text-end" md="1" xs="4">
+          <Col className="fw-light text-start" md="2" xs="4">
             <p>{this.props.data.doc.location_city}</p>
           </Col>
-          <Col className="text-end" md="2" xs="4">
+          <Col className="fw-light text-start" md="2" xs="4">
             <p>{this.props.data.doc.location_state}</p>
           </Col>
           <Col className="fw-light text-start" md="1" xs="4">
