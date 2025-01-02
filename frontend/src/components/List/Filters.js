@@ -8,7 +8,10 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
   const [regions, setRegions] = useState(locationFilters.region ? [locationFilters.region] : []);
   const [countries, setCountries] = useState(locationFilters.country ? [locationFilters.country] : []);
   const [years, setYears] = useState([]);
-
+  console.log("cities: " + cities);
+  console.log("regions: " + regions);
+  console.log("countries: " + countries);
+  
   // Génération des années
   useEffect(() => {
     const startYear = 2015;
