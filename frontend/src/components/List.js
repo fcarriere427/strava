@@ -62,7 +62,7 @@ const List = () => {
   }, [calculateStats]);
       
    // Appliquer les filtres sur les activités
-   const applyFilters = useCallback(() => {
+  const applyFilters = useCallback(() => {
     let filtered = [...allActivities];
 
     if (locationFilters.city !== 'all') {

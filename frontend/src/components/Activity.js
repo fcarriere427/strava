@@ -15,28 +15,30 @@ const Activity = () => {
   });
   const [isLoading, setIsLoading] = useState(true);
   
-  const getActivity = (id) => {
-    let url = '/api/strava/activity?id=' + id;
-    axios.get(url)
-    .then(
-      (response) => { 
-        setActivity(response.data);
-        setIsLoading(false); // données chargées
-      },
-      (error) => { 
-        console.log("ERREUR de l'API  : " + error);
-        setIsLoading(false);
-      }
-    )
-  }
+  const getActivity = useCallback(async (id) => {
+    try{
+      const url = '/api/strava/activity?id=' + id;
+      const response = await axios.get(url);
+      setActivity(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("API error:", error);
+      setIsLoading(false);
+    }
+  });
 
-  const handleBack = () => {
+  // Effet initial pour charger les activités
+  useEffect(() => {
+    getActivity(id);
+  }, [activity, getActivity]);
+
+  const handleBack = useCallback(() => {
     if (returnParams) {
       navigate(`/list${returnParams}`);
     } else {
       navigate('/list');
     }
-  };
+  });
 
   if (this.state.isLoading) {
     return <div>Loading...</div>;
@@ -73,6 +75,7 @@ const Activity = () => {
             <Row className="bg-white fw-light border ps-3">Region: {this.state.activity.location_state}</Row>
             <Row className="bg-white fw-light border ps-3">Country: {this.state.activity.location_country}</Row>
             <Row className="bg-white fw-light border ps-3">Id: {this.state.activity.id}</Row>
+            <Row><button onClick={handleBack}>Retour à la liste</button></Row>
           </Col>
         </Row>
       </Container>
