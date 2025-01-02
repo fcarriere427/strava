@@ -73,6 +73,9 @@ class Activity extends Component {
               <Row className="bg-white fw-light border ps-3">Max elevation: {this.state.activity.elev_high}m</Row>
               <Row className="bg-white fw-light border ps-3">Min elevation: {this.state.activity.elev_low}m</Row>
               <Row className="bg-white fw-light border ps-3">Average cadence: {this.state.activity.average_cadence ?this.state.activity.average_cadence : "N/A"}</Row>
+              <Row className="bg-white fw-light border ps-3">City: {this.state.activity.location_city}</Row>
+              <Row className="bg-white fw-light border ps-3">Region: {this.state.activity.location_state}</Row>
+              <Row className="bg-white fw-light border ps-3">Country: {this.state.activity.location_country}</Row>
               <Row className="bg-white fw-light border ps-3">Id: {this.state.activity.id}</Row>
             </Col>
           </Row>
