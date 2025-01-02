@@ -43,11 +43,12 @@ const MapAll = () => {
 
   return (
     <Container fluid className='bg-grey text-black text-center'>
-        <Row className="py-2">
+      {/* Remplacement de Row par une simple div pour éviter problème de Context ?!?  */}
+        <div className="mb-3">
           <SelectYear 
             currentYear={currentYear} 
             updateHandler={handleYearChange} />
-        </Row>
+        </div> 
 
         <MapContainer 
           center={mapCenter} 
