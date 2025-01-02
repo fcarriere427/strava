@@ -1,5 +1,8 @@
 // Gestion de la BDD : accès (création des activités), RAZ de la BDD
 
+// Fonction de géolocalisation
+const geoLoc = require('./getLocation.js');
+
 // Récupération des clés pour se connecter à couchDB
 const couchKeys = require('./keys/couchDB.json');
 var user = couchKeys.user;
@@ -7,6 +10,7 @@ var pwd = couchKeys.password;
 var host = couchKeys.host;
 var port = couchKeys.port;
 var url = 'http://' + user + ':' + pwd + '@' + host + ':' + port;
+
 // Ouverture de la BDD
 const nano = require ('nano')(url);
 const DBNAME = 'strava'
@@ -78,38 +82,98 @@ function readID(stravaDb) {
 }
 
 // Insertion dans la BDD des activités n'existant pas déjà dans la BDD (check via le tableau crée par readID)
-function insertNew(data, stravaDb){
+async function insertNew(data, stravaDb){
   // Création d'un enregistrement pour chaque activité
   console.log('   ... mise à jour de la DB avec '+ data.length + ' éléments...');
-  return new Promise((resolve, reject) => {
-    // count = longueur du tableau = tous les enregistrements qu'on a va essayer d'insérer
-    // count_insert = nb d'enregistrements qu'on aura vraimenté insérés ici
-    var count = 0;
-    var count_insert = 0;
-    for (let i = 0; i < data.length; i++) {
-      // si l'ID n'existe pas déjà, on ajoute l'enregistrement
-      if(!existingID.includes(data[i].id)) {
-        stravaDb.insert(data[i], function(){
-          count = count + 1;
-          count_insert = count_insert + 1;
-          if(count==data.length){
-            console.log('   ... OK, DB mise à jour avec ' + count_insert + ' élements (sur les ' + data.length + ' initiaux)');
-            resolve(count_insert);
-          }
-        })
-      } else {
-        // sinon, si l'ID existait déjà, on ne fait rien...
-        count = count + 1;
-        // .sauf si  on est au dernier enregistrement...
-        if(count==data.length){
-          //... et où on renvoie le nb d'enregistrements créés
-          console.log('      ... OK, DB mise à jour avec ' + count_insert + ' élements (sur les ' + data.length + ' initiaux)');
-          resolve(count_insert);
-        };
-      }
+
+  let count_insert = 0;
+  
+  // Promisification de l'insertion dans la BDD
+  const insertIntoDb = (activity) => {
+    return new Promise((resolve, reject) => {
+        stravaDb.insert(activity, (err) => {
+            if (err) reject(err);
+            resolve();
+        });
+    });
+  };
+
+  // Traitement séquentiel de chaque activité
+  for (const activity of data) {
+    try {
+        // Vérifie si l'ID existe déjà
+        if (!existingID.includes(activity.id)) {
+            // Arrondir les coordonnées à 5 décimales
+            const lat = Math.round(activity.start_latlng[0] * 100000) / 100000;
+            const lng = Math.round(activity.start_latlng[1] * 100000) / 100000;
+            console.log(`start_latlng de l'activité: [${lat}, ${lng}]`);
+
+            // Récupération de la localisation
+            const geocoder = new geoLoc.Geocoder();
+            const location = await geocoder.getCommune(lat, lng);
+            console.log(`retour de l'API Nominatim: ${location.nom}, ${location.departement}, ${location.pays}`);
+
+            // Mise à jour des informations de localisation
+            activity.location_city = location.nom || "Non défini";
+            activity.location_state = location.departement || "Non défini";
+            activity.location_country = location.pays || "Non défini";
+
+            // Insertion dans la BDD
+            await insertIntoDb(activity);
+            count_insert++;
+        }
+    } catch (error) {
+        console.error(`Erreur lors du traitement de l'activité ${activity.id}:`, error);
+        // throw error; // Si vous voulez arrêter le processus en cas d'erreur
     }
-  })
-}
+  }
+
+  console.log(`   ... OK, DB mise à jour avec ${count_insert} éléments (sur les ${data.length} initiaux)`);
+  return count_insert;
+  }
+
+
+//   return new Promise((resolve, reject) => {
+//     // count = longueur du tableau = tous les enregistrements qu'on a va essayer d'insérer
+//     // count_insert = nb d'enregistrements qu'on aura vraimenté insérés ici
+//     var count = 0;
+//     var count_insert = 0;
+//     for (let i = 0; i < data.length; i++) {
+//       // si l'ID n'existe pas déjà, on ajoute l'enregistrement
+//       if(!existingID.includes(data[i].id)) {
+//         // appel de getLocation.js pour récupérer la localisation
+//         console.log('start_latlng de l\'activité ' + data[i].start_latlng);
+//         const geocoder = new geoLoc.Geocoder();
+//         const lat = Math.round(data[i].start_latlng[0]*100000)/100000;
+//         const lng = Math.round(data[i].start_latlng[1]*100000)/100000;
+//         const location = await geocoder.getCommune(lat, lng);
+//         //const location = await geocoder.getCommune(48.8566, 2.3522);
+//         // ajout de la localisation dans l'activité
+//         data[i].location_city = "bécon les bruyères :-)";
+//         data[i].location_state = "par ici";
+//         data[i].location_country = "dans le coin";
+//         // ajout à la BDD
+//         stravaDb.insert(data[i], function(){    
+//           count = count + 1;
+//           count_insert = count_insert + 1;
+//           if(count==data.length){
+//             console.log('   ... OK, DB mise à jour avec ' + count_insert + ' élements (sur les ' + data.length + ' initiaux)');
+//             resolve(count_insert);
+//           }
+//         })
+//       } else {
+//         // sinon, si l'ID existait déjà, on ne fait rien...
+//         count = count + 1;
+//         // .sauf si  on est au dernier enregistrement...
+//         if(count==data.length){
+//           //... et où on renvoie le nb d'enregistrements créés
+//           console.log('      ... OK, DB mise à jour avec ' + count_insert + ' élements (sur les ' + data.length + ' initiaux)');
+//           resolve(count_insert);
+//         };
+//       }
+//     }
+//   })
+// }
 
 // Créee les vues nécessaires dans la BDD
 function createViewDB() {
