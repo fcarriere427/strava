@@ -1,8 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap'
 import { ActivitySummaryWithNavigate } from './List/ActivitySummary'
-import { SelectYear } from './List/SelectYear'
-import LocationFilters from './List/LocationFilters'
+import Filters from './List/Filters'
 import { strSpeed } from '../utils/functions'
 import axios from 'axios';
 
@@ -107,16 +106,12 @@ const List = () => {
 
   return (
     <Container fluid className='bg-grey text-black text-center'>
-      <Row className="py-2">
-        <SelectYear 
-          currentYear={currentYear} 
-          updateHandler={handleYearChange}
-        />
-      </Row>
-
-      <LocationFilters
+    
+      <Filters
         activities={allActivities}
         onFilterChange={handleLocationFilterChange}
+        currentYear={currentYear}
+        updateHandler={handleYearChange}
       />
 
       <Row className="py-3 bg-info">

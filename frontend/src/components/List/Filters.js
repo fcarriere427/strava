@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, FormGroup, Label, Input } from 'reactstrap';
 
-const LocationFilters = ({ activities, onFilterChange }) => {
+const Filters = ({ activities, onFilterChange, currentYear, updateHandler }) => {
   // États pour stocker les options uniques
   const [cities, setCities] = useState([]);
   const [regions, setRegions] = useState([]);
   const [countries, setCountries] = useState([]);
-  
-  // États pour les valeurs sélectionnées
-  const [selectedCity, setSelectedCity] = useState('all');
-  const [selectedRegion, setSelectedRegion] = useState('all');
-  const [selectedCountry, setSelectedCountry] = useState('all');
+  const [years, setYears] = useState([]);
+
+  // Génération des années
+  useEffect(() => {
+    const startYear = 2015;
+    const lastYear = new Date().getFullYear();
+    const yearsList = ['*** All ***'];
+    for (let year = lastYear; year >= startYear; year--) {
+      yearsList.push(year.toString());
+    }
+    setYears(yearsList);
+  }, []);
 
   // Extraction des options uniques à partir des activités
   useEffect(() => {
@@ -23,7 +30,11 @@ const LocationFilters = ({ activities, onFilterChange }) => {
     setCountries(uniqueCountries);
   }, [activities]);
 
-  // Gestion des changements de filtre
+  // États pour les valeurs sélectionnées
+  const [selectedCity, setSelectedCity] = useState('all');
+  const [selectedRegion, setSelectedRegion] = useState('all');
+  const [selectedCountry, setSelectedCountry] = useState('all');
+
   const handleFilterChange = (type, value) => {
     switch(type) {
       case 'city':
@@ -31,20 +42,17 @@ const LocationFilters = ({ activities, onFilterChange }) => {
         break;
       case 'region':
         setSelectedRegion(value);
-        // Reset city if region changes
-        setSelectedCity('all');
+        setSelectedCity('all'); // Reset city if region changes
         break;
       case 'country':
         setSelectedCountry(value);
-        // Reset city and region if country changes
-        setSelectedCity('all');
-        setSelectedRegion('all');
+        setSelectedCity('all'); // Reset city if country changes
+        setSelectedRegion('all'); // Reset region if country changes
         break;
       default:
         break;
     }
 
-    // Notifier le parent des changements
     onFilterChange({
       city: type === 'city' ? value : selectedCity,
       region: type === 'region' ? value : selectedRegion,
@@ -53,8 +61,25 @@ const LocationFilters = ({ activities, onFilterChange }) => {
   };
 
   return (
-    <Row className="mb-3">
-      <Col md={4}>
+    <Row className="align-items-end mb-3">
+      <Col md={3}>
+        <FormGroup>
+          <Label for="yearFilter">Année</Label>
+          <Input
+            type="select"
+            id="yearFilter"
+            value={currentYear}
+            onChange={updateHandler}
+          >
+            {years.map(year => (
+              <option key={year} value={year}>
+                {year === '*** All ***' ? 'Toutes les années' : year}
+              </option>
+            ))}
+          </Input>
+        </FormGroup>
+      </Col>
+      <Col md={3}>
         <FormGroup>
           <Label for="cityFilter">Ville</Label>
           <Input
@@ -71,7 +96,7 @@ const LocationFilters = ({ activities, onFilterChange }) => {
           </Input>
         </FormGroup>
       </Col>
-      <Col md={4}>
+      <Col md={3}>
         <FormGroup>
           <Label for="regionFilter">Région</Label>
           <Input
@@ -88,7 +113,7 @@ const LocationFilters = ({ activities, onFilterChange }) => {
           </Input>
         </FormGroup>
       </Col>
-      <Col md={4}>
+      <Col md={3}>
         <FormGroup>
           <Label for="countryFilter">Pays</Label>
           <Input
@@ -109,4 +134,4 @@ const LocationFilters = ({ activities, onFilterChange }) => {
   );
 };
 
-export default LocationFilters;
+export default Filters;
