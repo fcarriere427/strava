@@ -6,10 +6,11 @@ class GeoCoder {
     async getCommune(latitude, longitude) {
         // Respect de la limite de débit de Nominatim
         const now = Date.now();
-        if (now - this.lastNominatimRequest < 1000) {
+        const limit = 1200; // 1 requête par seconde
+        if (now - this.lastNominatimRequest < limit) {
             await new Promise(resolve => {
-                setTimeout(resolve, 1000 - (now - this.lastNominatimRequest));
-                console.log('Attente de 1 seconde pour respecter la limite de débit de Nominatim...');
+                setTimeout(resolve, limit - (now - this.lastNominatimRequest));
+                console.log('Attente pour respecter la limite de débit de Nominatim...');
             }
         )}
         this.lastNominatimRequest = Date.now();
