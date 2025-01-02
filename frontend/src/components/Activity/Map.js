@@ -10,25 +10,6 @@ const LeafletMap = React.memo(({ children, ...props }) => (
   </MapContainer>
 ));
 
-const bounds = positions.reduce(
-  (bounds, position) => {
-    if (!Array.isArray(position) || position.length < 2) {
-      return bounds;
-    }
-    return [
-      [
-        Math.min(bounds[0][0], position[0]),
-        Math.min(bounds[0][1], position[1])
-      ],
-      [
-        Math.max(bounds[1][0], position[0]),
-        Math.max(bounds[1][1], position[1])
-      ]
-    ];
-  },
-  [[positions[0][0], positions[0][1]], [positions[0][0], positions[0][1]]]
-);
-
 const Map = ({ activity }) => {
   const positions = activity?.map?.summary_polyline ? decode(activity.map.summary_polyline) : null;
   const hasValidRoute = positions && positions.length > 0;
@@ -36,6 +17,25 @@ const Map = ({ activity }) => {
     ? activity.start_latlng
     : [47.58550, -2.99804];
 
+  const bounds = positions.reduce(
+    (bounds, position) => {
+      if (!Array.isArray(position) || position.length < 2) {
+        return bounds;
+      }
+      return [
+        [
+          Math.min(bounds[0][0], position[0]),
+          Math.min(bounds[0][1], position[1])
+        ],
+        [
+          Math.max(bounds[1][0], position[0]),
+          Math.max(bounds[1][1], position[1])
+        ]
+      ];
+    },
+    [[positions[0][0], positions[0][1]], [positions[0][0], positions[0][1]]]
+  );
+  
   return (
     <div className="h-100 d-flex flex-column">
       {!hasValidRoute && (
