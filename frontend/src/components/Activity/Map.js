@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useMemo} from 'react';
 import { MapContainer, TileLayer, Polyline } from 'react-leaflet';
 import { Alert } from 'reactstrap';
 import { decode } from '@mapbox/polyline';
 
 const Map = ({ activity }) => {
-  const positions = activity?.map?.summary_polyline ? decode(activity.map.summary_polyline) : null;
-  const hasValidRoute = positions && positions.length > 0;
-  const startPoint = Array.isArray(activity?.start_latlng) && activity.start_latlng.length >= 2
-    ? activity.start_latlng
-    : [47.58550, -2.99804];
+  const { positions, hasValidRoute } = useMemo(() => {
+    const positions = activity?.map?.summary_polyline ? decode(activity.map.summary_polyline) : null;
+    const hasValidRoute = positions && positions.length > 0;
+    return { positions, hasValidRoute };
+  }, [activity]);
 
   const mapContent = useMemo(() => {
   
+    const startPoint = Array.isArray(activity?.start_latlng) && activity.start_latlng.length >= 2
+      ? activity.start_latlng
+      : [47.58550, -2.99804];
+
     if (!hasValidRoute) {
       return (
         <MapContainer
@@ -63,7 +67,7 @@ const Map = ({ activity }) => {
         />
       </MapContainer>
     );
-  }, [hasValidRoute, positions, startPoint]);
+  }, [hasValidRoute, positions, activity]);
 
   return (
     <div className="h-100 d-flex flex-column">
@@ -76,3 +80,5 @@ const Map = ({ activity }) => {
     </div>
   );
 };
+
+export default Map; 
