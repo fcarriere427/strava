@@ -7,56 +7,61 @@ import { decode } from '@mapbox/polyline';
 const Map = ({ activity }) => {
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
+  const polylineRef = useRef(null);
 
+  // Premier useEffect pour initialiser la carte
   useEffect(() => {
-    // S'assurer que le conteneur est disponible
-    if (!mapContainerRef.current) return;
-  
-    // Attendre un tick pour s'assurer que le DOM est prêt
-    setTimeout(() => {
-      // Nettoyer la carte existante si elle existe
-      if (mapRef.current) {
-        mapRef.current.remove();
-        mapRef.current = null;
-      }
-  
-      const positions = activity?.map?.summary_polyline ? decode(activity.map.summary_polyline) : null;
-      const hasValidRoute = positions && positions.length > 0;
-      const startPoint = Array.isArray(activity?.start_latlng) && activity.start_latlng.length >= 2
-        ? activity.start_latlng
-        : [47.58550, -2.99804];
-  
-      // Créer la nouvelle carte
-      mapRef.current = L.map(mapContainerRef.current).setView(startPoint, 13);
-      
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(mapRef.current);
-  
-      if (hasValidRoute) {
-        const bounds = L.latLngBounds(positions);
-        mapRef.current.fitBounds(bounds);
-  
-        L.polyline(positions, {
-          color: 'purple',
-          weight: 3,
-          opacity: 0.7
-        }).addTo(mapRef.current);
-      }
-    }, 0);
-  
-    // Nettoyage
+    if (!mapContainerRef.current || mapRef.current) return;
+
+    const startPoint = [47.58550, -2.99804]; // Point par défaut
+    mapRef.current = L.map(mapContainerRef.current).setView(startPoint, 13);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mapRef.current);
+
+    // Nettoyage lors du démontage
     return () => {
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
       }
     };
-  }, [activity]);
+  }, []); // Dépendances vides - s'exécute une seule fois au montage
+
+  // Deuxième useEffect pour gérer les mises à jour des données
+  useEffect(() => {
+    if (!mapRef.current) return;
+
+    // Nettoyer la polyline existante
+    if (polylineRef.current) {
+      polylineRef.current.remove();
+      polylineRef.current = null;
+    }
+
+    const positions = activity?.map?.summary_polyline ? decode(activity.map.summary_polyline) : null;
+    const hasValidRoute = positions && positions.length > 0;
+
+    if (hasValidRoute) {
+      const bounds = L.latLngBounds(positions);
+      mapRef.current.fitBounds(bounds);
+
+      polylineRef.current = L.polyline(positions, {
+        color: 'purple',
+        weight: 3,
+        opacity: 0.7
+      }).addTo(mapRef.current);
+    } else {
+      const startPoint = Array.isArray(activity?.start_latlng) && activity.start_latlng.length >= 2
+        ? activity.start_latlng
+        : [47.58550, -2.99804];
+      mapRef.current.setView(startPoint, 13);
+    }
+  }, [activity]); // Se déclenche uniquement quand activity change
 
   return (
     <div className="h-100 d-flex flex-column">
-      {activity?.map?.summary_polyline ? null : (
+      {!activity?.map?.summary_polyline && (
         <Alert color="warning" className="m-2" fade={false}>
           Pas de tracé GPS disponible pour cette activité
         </Alert>
