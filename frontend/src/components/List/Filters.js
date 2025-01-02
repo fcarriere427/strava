@@ -3,14 +3,10 @@ import { Row, Col, FormGroup, Label, Input } from 'reactstrap';
 
 const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locationFilters }) => {
   // États pour stocker les options uniques
-  console.log("locationFilters: " + locationFilters.city + " " + locationFilters.region + " " + locationFilters.country);
   const [cities, setCities] = useState(locationFilters.city ? [locationFilters.city] : []);
   const [regions, setRegions] = useState(locationFilters.region ? [locationFilters.region] : []);
   const [countries, setCountries] = useState(locationFilters.country ? [locationFilters.country] : []);
   const [years, setYears] = useState([]);
-  console.log("cities: " + cities);
-  console.log("regions: " + regions);
-  console.log("countries: " + countries);
   
   // Génération des années
   useEffect(() => {
@@ -35,9 +31,16 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
   }, [activities]);
 
   // États pour les valeurs sélectionnées
-  const [selectedCity, setSelectedCity] = useState('all');
-  const [selectedRegion, setSelectedRegion] = useState('all');
-  const [selectedCountry, setSelectedCountry] = useState('all');
+  // États pour les valeurs sélectionnées
+  const [selectedCity, setSelectedCity] = useState(locationFilters.city || 'all');
+  const [selectedRegion, setSelectedRegion] = useState(locationFilters.region || 'all');
+  const [selectedCountry, setSelectedCountry] = useState(locationFilters.country || 'all');
+  // const [selectedCity, setSelectedCity] = useState('all');
+  // const [selectedRegion, setSelectedRegion] = useState('all');
+  // const [selectedCountry, setSelectedCountry] = useState('all');
+  console.log("cities: " + cities);
+  console.log("regions: " + regions);
+  console.log("countries: " + countries);
 
   const handleFilterChange = (type, value) => {
     switch(type) {
