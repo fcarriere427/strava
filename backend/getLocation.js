@@ -31,7 +31,7 @@ class GeoCoder {
         this.lastNominatimRequest = Date.now();
 
         try {
-            console.log(`Tentative de géocodage pour : lat=${latitude}, lng=${longitude}`);
+            //console.log(`Tentative de géocodage pour : lat=${latitude}, lng=${longitude}`);
             const url = `https://nominatim.openstreetmap.org/reverse?` +
               `format=json&lat=${latitude}&lon=${longitude}&zoom=10&addressdetails=1`;
       

@@ -111,7 +111,7 @@ async function insertNew(data, stravaDb){
             activity.location_city = location.nom || "Undefined";
             activity.location_state = location.departement || "Undefined";
             activity.location_country = location.pays || "Undefined";
-            console.log(`Activité ${activity.id} : ${activity.location_city}, ${activity.location_state}, ${activity.location_country}`);
+            //console.log(`Activité ${activity.id} : ${activity.location_city}, ${activity.location_state}, ${activity.location_country}`);
 
             // Insertion dans la BDD
             await insertIntoDb(activity);
