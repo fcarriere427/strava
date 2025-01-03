@@ -69,29 +69,37 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
     )].sort();
   };
   
-  const handleLocationFilterChange = (type, value) => {
-    switch(type) {
-      case 'city':
-        setSelectedCity(value);
-        break;
-      case 'region':
-        setSelectedRegion(value);
-        setSelectedCity('all'); // Reset city if region changes
-        break;
-      case 'country':
-        setSelectedCountry(value);
-        setSelectedCity('all'); // Reset city if country changes
-        setSelectedRegion('all'); // Reset region if country changes
-        break;
-      default:
-        break;
-    }
+  const handleLocationFilterChange = (newFilters) => {
+    // Mettre à jour les états locaux
+    setSelectedCity(newFilters.city);
+    setSelectedRegion(newFilters.region);
+    setSelectedCountry(newFilters.country);
+    // Propager les changements au parent
+    onFilterChange(newFilters);
+    
+    
+    // switch(type) {
+    //   case 'city':
+    //     setSelectedCity(value);
+    //     break;
+    //   case 'region':
+    //     setSelectedRegion(value);
+    //     setSelectedCity('all'); // Reset city if region changes
+    //     break;
+    //   case 'country':
+    //     setSelectedCountry(value);
+    //     setSelectedCity('all'); // Reset city if country changes
+    //     setSelectedRegion('all'); // Reset region if country changes
+    //     break;
+    //   default:
+    //     break;
+    // }
 
-    onFilterChange({
-      city: type === 'city' ? value : selectedCity,
-      region: type === 'region' ? value : selectedRegion,
-      country: type === 'country' ? value : selectedCountry
-    });
+    // onFilterChange({
+    //   city: type === 'city' ? value : selectedCity,
+    //   region: type === 'region' ? value : selectedRegion,
+    //   country: type === 'country' ? value : selectedCountry
+    // });
   };
 
   return (
