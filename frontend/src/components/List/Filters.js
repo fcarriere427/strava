@@ -31,10 +31,43 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
   }, [activities]);
 
   // États pour les valeurs sélectionnées
-  // États pour les valeurs sélectionnées
   const [selectedCity, setSelectedCity] = useState(locationFilters.city || 'all');
   const [selectedRegion, setSelectedRegion] = useState(locationFilters.region || 'all');
   const [selectedCountry, setSelectedCountry] = useState(locationFilters.country || 'all');
+
+  // Fonctions utilitaires pour gérer l'interdépendance des filtres:
+  const getAvailableRegions = (activities, selectedCity, selectedCountry) => {
+    return [...new Set(activities
+      .filter(activity => 
+        (selectedCity === 'all' || activity.doc.location_city === selectedCity) &&
+        (selectedCountry === 'all' || activity.doc.location_country === selectedCountry)
+      )
+      .map(activity => activity.doc.location_state)
+      .filter(Boolean)
+    )].sort();
+  };
+
+  const getAvailableCities = (activities, selectedRegion, selectedCountry) => {
+    return [...new Set(activities
+      .filter(activity => 
+        (selectedRegion === 'all' || activity.doc.location_state === selectedRegion) &&
+        (selectedCountry === 'all' || activity.doc.location_country === selectedCountry)
+      )
+      .map(activity => activity.doc.location_city)
+      .filter(Boolean)
+    )].sort();
+  };
+
+  const getAvailableCountries = (activities, selectedCity, selectedRegion) => {
+    return [...new Set(activities
+      .filter(activity => 
+        (selectedCity === 'all' || activity.doc.location_city === selectedCity) &&
+        (selectedRegion === 'all' || activity.doc.location_state === selectedRegion)
+      )
+      .map(activity => activity.doc.location_country)
+      .filter(Boolean)
+    )].sort();
+  };
   
   const handleFilterChange = (type, value) => {
     switch(type) {
@@ -88,14 +121,20 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
             type="select"
             id="cityFilter"
             value={selectedCity}
-            onChange={(e) => handleFilterChange('city', e.target.value)}
+            onChange={(e) => handleLocationFilterChange({
+              ...locationFilters,
+              city: e.target.value,
+              // Réinitialiser les autres filtres si nécessaire
+              region: e.target.value !== 'all' ? 'all' : locationFilters.region,
+              country: e.target.value !== 'all' ? 'all' : locationFilters.country
+            })}
           >
             <option value="all">Toutes les villes</option>
-            {cities.filter(city => city !== 'all').map(city => (
-              <option key={city} value={city}>
-                {city}
-              </option>
-            ))}
+            {getAvailableCities(activities, locationFilters.region, locationFilters.country)
+              .map(city => (
+                <option key={city} value={city}>{city}</option>
+              ))
+            }
           </Input>
         </FormGroup>
       </Col>
@@ -106,13 +145,17 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
             type="select"
             id="regionFilter"
             value={selectedRegion}
-            onChange={(e) => handleFilterChange('region', e.target.value)}
+            onChange={(e) => handleLocationFilterChange({
+              ...locationFilters,
+              region: e.target.value
+            })}
           >
             <option value="all">Toutes les régions</option>
-            {regions.filter(region => region !== 'all').map(region => (
-              <option key={region} value={region}>
-                {region}
-              </option>
+            {getAvailableRegions(activities, locationFilters.city, locationFilters.country)
+              .map(region => (
+                <option key={region} value={region}>{region}</option>
+              ))
+            }
             ))}
           </Input>
         </FormGroup>
@@ -124,14 +167,17 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
             type="select"
             id="countryFilter"
             value={selectedCountry}
-            onChange={(e) => handleFilterChange('country', e.target.value)}
+            onChange={(e) => handleLocationFilterChange({
+              ...locationFilters,
+              country: e.target.value
+            })}
           >
             <option value="all">Tous les pays</option>
-            {countries.filter(country => country !== 'all').map(country => (
-              <option key={country} value={country}>
-                {country}
-              </option>
-            ))}
+            {getAvailableCountries(activities, locationFilters.city, locationFilters.region)
+              .map(country => (
+                <option key={country} value={country}>{country}</option>
+              ))
+            }
           </Input>
         </FormGroup>
       </Col>
