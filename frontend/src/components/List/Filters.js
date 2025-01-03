@@ -156,7 +156,6 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
                 <option key={region} value={region}>{region}</option>
               ))
             }
-            ))}
           </Input>
         </FormGroup>
       </Col>
