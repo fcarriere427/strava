@@ -69,7 +69,7 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
     )].sort();
   };
   
-  const handleFilterChange = (type, value) => {
+  const handleLocationFilterChange = (type, value) => {
     switch(type) {
       case 'city':
         setSelectedCity(value);
