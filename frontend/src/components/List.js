@@ -12,7 +12,7 @@ const List = () => {
   const [allActivities, setAllActivities] = useState([]); // Toutes les activités non filtrées
   const [filteredActivities, setFilteredActivities] = useState([]); // Activités après filtrage
   const [currentYear, setCurrentYear]  = useState(
-    searchParams.get('year') || new Date().getFullYear().toString()
+    searchParams.get('year') || 'all'
   );
   const [locationFilters, setLocationFilters] = useState({
     city: searchParams.get('city') || 'all',
@@ -95,18 +95,18 @@ const List = () => {
   }, [currentYear, getActivities]);
 
   const handleYearChange = useCallback((evt) => {
-    const value = evt.target.value;
-    setCurrentYear(value);
+    const year = evt.target.value;
+    setCurrentYear(year);
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev);
-      if (selectedYear === 'all') {
+      if (year === 'all') {
         newParams.delete('year');
       } else {
-        newParams.set('year', selectedYear);
+        newParams.set('year', year);
       }
       return newParams;
     });
-    getActivities(year);
+    getActivities(year === 'all' ? undefined : year);
   }, [getActivities, setSearchParams]);
 
   const handleLocationFilterChange = useCallback((filters) => {
