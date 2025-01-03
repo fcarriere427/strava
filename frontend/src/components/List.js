@@ -11,13 +11,13 @@ const List = () => {
   
   const [allActivities, setAllActivities] = useState([]); // Toutes les activités non filtrées
   const [filteredActivities, setFilteredActivities] = useState([]); // Activités après filtrage
-  const [currentYear, setCurrentYear] = useState(
+  const [currentYear, setCurrentYear] = useState(() => {
     const yearFromURL = searchParams.get('year');
     // Si un paramètre year existe dans l'URL, on le garde
     // Sinon, si c'est le premier chargement (pas de paramètres d'URL), on met l'année courante
     // Sinon (retour de navigation), on garde 'all'
     return yearFromURL || (!searchParams.toString() ? new Date().getFullYear().toString() : 'all');
-  );
+  });
 
   const [locationFilters, setLocationFilters] = useState({
     city: searchParams.get('city') || 'all',
