@@ -96,11 +96,14 @@ const List = () => {
 
   const handleYearChange = useCallback((evt) => {
     const value = evt.target.value;
-    const year = value === "*** All ***" ? "all" : value;
     setCurrentYear(value);
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev);
-      newParams.set('year', value);
+      if (selectedYear === 'all') {
+        newParams.delete('year');
+      } else {
+        newParams.set('year', selectedYear);
+      }
       return newParams;
     });
     getActivities(year);

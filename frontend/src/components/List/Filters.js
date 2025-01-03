@@ -12,7 +12,7 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
   useEffect(() => {
     const startYear = 2015;
     const lastYear = new Date().getFullYear();
-    const yearsList = ['*** All ***'];
+    const yearsList = ['all'];
     for (let year = lastYear; year >= startYear; year--) {
       yearsList.push(year.toString());
     }
@@ -35,13 +35,7 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
   const [selectedCity, setSelectedCity] = useState(locationFilters.city || 'all');
   const [selectedRegion, setSelectedRegion] = useState(locationFilters.region || 'all');
   const [selectedCountry, setSelectedCountry] = useState(locationFilters.country || 'all');
-  // const [selectedCity, setSelectedCity] = useState('all');
-  // const [selectedRegion, setSelectedRegion] = useState('all');
-  // const [selectedCountry, setSelectedCountry] = useState('all');
-  console.log("cities: " + cities);
-  console.log("regions: " + regions);
-  console.log("countries: " + countries);
-
+  
   const handleFilterChange = (type, value) => {
     switch(type) {
       case 'city':
@@ -78,9 +72,10 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
             value={currentYear}
             onChange={updateHandler}
           >
-            {years.map(year => (
+            <option value="all">Toutes les années</option>
+            {years.filter(year => year !== 'all').map(year => (
               <option key={year} value={year}>
-                {year === '*** All ***' ? 'Toutes les années' : year}
+                {year}
               </option>
             ))}
           </Input>
