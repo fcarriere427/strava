@@ -95,9 +95,10 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
             value={selectedCity}
             onChange={(e) => handleFilterChange('city', e.target.value)}
           >
-            {cities.map(city => (
+            <option value="all">Toutes les villes</option>
+            {cities.filter(city => city !== 'all').map(city => (
               <option key={city} value={city}>
-                {city === 'all' ? 'Toutes les villes' : city}
+                {city}
               </option>
             ))}
           </Input>
@@ -112,9 +113,10 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
             value={selectedRegion}
             onChange={(e) => handleFilterChange('region', e.target.value)}
           >
-            {regions.map(region => (
+            <option value="all">Toutes les régions</option>
+            {regions.filter(region => region !== 'all').map(region => (
               <option key={region} value={region}>
-                {region === 'all' ? 'Toutes les régions' : region}
+                {region}
               </option>
             ))}
           </Input>
@@ -129,9 +131,10 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
             value={selectedCountry}
             onChange={(e) => handleFilterChange('country', e.target.value)}
           >
-            {countries.map(country => (
+            <option value="all">Tous les pays</option>
+            {countries.filter(country => country !== 'all').map(country => (
               <option key={country} value={country}>
-                {country === 'all' ? 'Tous les pays' : country}
+                {country}
               </option>
             ))}
           </Input>
