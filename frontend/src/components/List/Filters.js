@@ -76,30 +76,6 @@ const Filters = ({ activities, onFilterChange, currentYear, updateHandler, locat
     setSelectedCountry(newFilters.country);
     // Propager les changements au parent
     onFilterChange(newFilters);
-    
-    
-    // switch(type) {
-    //   case 'city':
-    //     setSelectedCity(value);
-    //     break;
-    //   case 'region':
-    //     setSelectedRegion(value);
-    //     setSelectedCity('all'); // Reset city if region changes
-    //     break;
-    //   case 'country':
-    //     setSelectedCountry(value);
-    //     setSelectedCity('all'); // Reset city if country changes
-    //     setSelectedRegion('all'); // Reset region if country changes
-    //     break;
-    //   default:
-    //     break;
-    // }
-
-    // onFilterChange({
-    //   city: type === 'city' ? value : selectedCity,
-    //   region: type === 'region' ? value : selectedRegion,
-    //   country: type === 'country' ? value : selectedCountry
-    // });
   };
 
   return (

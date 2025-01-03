@@ -11,9 +11,10 @@ const List = () => {
   
   const [allActivities, setAllActivities] = useState([]); // Toutes les activités non filtrées
   const [filteredActivities, setFilteredActivities] = useState([]); // Activités après filtrage
-  const [currentYear, setCurrentYear]  = useState(
-    searchParams.get('year') || 'all'
+  const [currentYear, setCurrentYear] = useState(
+    searchParams.get('year') || new Date().getFullYear().toString()
   );
+
   const [locationFilters, setLocationFilters] = useState({
     city: searchParams.get('city') || 'all',
     region: searchParams.get('region') || 'all',
